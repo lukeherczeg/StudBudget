@@ -1,6 +1,6 @@
 #include <iostream>
 
-int main() {
+int someThingOtherThanMain() {
   std::cout<<"Test"<<std:endl;
 
   return 0;
