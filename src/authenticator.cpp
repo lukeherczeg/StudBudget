@@ -10,16 +10,16 @@
 #include <istream>
 using namespace std;
 #include "authenticator.h"
+#include "user.h"
 
 
 string Authenticator::getPassword(){
-	return this->user.password;
+	return this->user.getPassword();
 }
 
 string Authenticator::getUsername(){
-	return this->user.username;
+	return this->user.getUsername();
 }
-
 
 int characterCountUntilSpace(std::string word)
 {
@@ -30,10 +30,6 @@ int characterCountUntilSpace(std::string word)
     	count++;
     }
     return count;
-}
-
-Authenticator::Authenticator(User user){
-	this->user = user;
 }
 
 void Authenticator::logIn(bool & finished){
@@ -93,6 +89,22 @@ void Authenticator::signUp(){
 	}
 }
 
+void Authenticator::printUsers(){
+	ifstream readData;
+	string tempUser;
+	int count = 0;
+
+	cout << "Users:" << endl;
+	readData.open("authData.txt");
+	while(getline(readData, tempUser)){
+		count++;
+		cout << count << ".) " << tempUser << endl;
+	}
+	if(count == 0)
+		cout << "No users found." << endl;
+	readData.close();
+}
+
 void Authenticator::authenticate(){
 	string username = "";
 	string password = "";
@@ -133,7 +145,7 @@ void Authenticator::authenticate(){
 				this->signUp();
 				break;
 			case 3:
-				printUsers();
+				this->printUsers();
 				break;
 			case 4:
 				cout << "Are you sure you want to clear all users? y/n : ";
