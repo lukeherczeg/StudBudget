@@ -9,20 +9,16 @@
 #ifndef user_h
 #define user_h
 
-#include <string>
-#include <cstdlib>
-#include <iostream>
-//#include "Account.h"
-
-using namespace std;
-
 class User {
     
 private:
     const string name;
+    const string username;
+    const string password;
     //Account account; //can't uncomment until Account class exists
     
 public:
+    User(string username, string password);
     void setName(string x);
     string getName();
     

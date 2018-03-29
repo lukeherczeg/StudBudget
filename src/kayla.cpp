@@ -2,6 +2,7 @@
 #include "user.h"
 #include "account.h"
 #include "authenticator.h"
+#include "expenses.h"
 
 int main() {
   std::cout<<"Test"<<std::endl;
