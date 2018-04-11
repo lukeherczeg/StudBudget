@@ -5,15 +5,16 @@
  */
 #include "user.h"
 #include <string>
+#include <vector>
 
 #ifndef AUTHENTICATOR_H_
 #define AUTHENTICATOR_H_
 
 class Authenticator{
 private:
-	User user;
-	string getUsername();
-	string getPassword();
+	std::vector<User> users;
+	string getUsername(int i);
+	string getPassword(int i);
 public:
 	Authenticator(User user);
 	void logIn(bool & finished);

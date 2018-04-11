@@ -13,12 +13,12 @@ using namespace std;
 #include "user.h"
 
 
-string Authenticator::getPassword(){
-	return this->user.getPassword();
+string Authenticator::getPassword(int i){
+	return this->users[i].getPassword();
 }
 
-string Authenticator::getUsername(){
-	return this->user.getUsername();
+string Authenticator::getUsername(int i){
+	return this->users[i].getUsername();
 }
 
 int characterCountUntilSpace(std::string word)
@@ -34,7 +34,8 @@ int characterCountUntilSpace(std::string word)
 
 void Authenticator::logIn(bool & finished){
 	string tempUser;
-	string auth = "Username: " + this->getUsername() + "    Password: " + this->getPassword();
+	int i = 0;
+	string auth = "Username: " + this->getUsername(i) + "    Password: " + this->getPassword(i);
 
 	bool login = false;
 	ifstream readData;
@@ -57,6 +58,7 @@ void Authenticator::logIn(bool & finished){
 
 void Authenticator::signUp(){
 	ifstream readData;
+	int i = 0;
 	bool exists = false;
 	string tempUser, tempUsername, tempPassword;
 	int passwordStart, tempPasswordLength, tempUsernameLength;
@@ -71,7 +73,7 @@ void Authenticator::signUp(){
 		tempUsername = tempUser.substr(usernameStart, tempUsernameLength);
 		tempPassword = tempUser.substr(passwordStart, tempPasswordLength);
 
-		if(tempUsername == this->getUsername() || tempPassword == this->getPassword()){
+		if(tempUsername == this->getUsername(i) || tempPassword == this->getPassword(i)){
 			cout << "Username or password already in use! Try something else." << endl;
 			exists = true;
 			break;
@@ -79,8 +81,8 @@ void Authenticator::signUp(){
 	}
 
 	if(!exists){
-		string auth = "Username: " + this->getUsername() + "    Password: " + this->getPassword();
-		//			  Length 10	^			                Length 14 ^
+		string auth = "Username: " + this->getUsername(i) + "    Password: " + this->getPassword(i);
+		//			  Length 10	^			              	  Length 14 ^
 		ofstream writeData;
 		writeData.open ("authData.txt", ios_base::app);
 		writeData << auth << endl;
