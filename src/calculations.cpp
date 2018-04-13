@@ -10,10 +10,6 @@
 
 using namespace std;
 
-double calculateProfit();
-void transfer(User);
-
-
 double Calculations::monthlyProfit(){
 	return 0.0;
 }
@@ -29,7 +25,3 @@ double Calculations::calculateProfit() {
 void Calculations::transfer(User x) {
   return;
 }
-
-
-
-string
