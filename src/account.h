@@ -12,15 +12,15 @@
 #include <string>
 #include <cstdlib>
 #include <iostream>
-//#include "Expenses.h"
-//#include "user.h"
+#include "expenses.h"
+#include "user.h"
 
 class Account {
-    
+
 private:
     double startBalance;
     double incomingSalary;
-    //Expenses expenses; //can't uncomment until Expenses class is created
+    //expenses expenses; //can't uncomment until Expenses class is created
     double savingAccountNumber;
     double checkingAccountNumber;
 

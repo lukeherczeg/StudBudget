@@ -7,25 +7,26 @@
 //
 using namespace std;
 #include <string>
+#include "account.h"
 
 #ifndef user_h
 #define user_h
 
 class User {
-    
+
 private:
     string name;
     string username;
     string password;
-    //Account account; //can't uncomment until Account class exists
-    
+    Account account;
+
 public:
     User(string username, string password);
     void setName(string x);
     string getUsername();
     string getPassword();
     string getName();
-    
+
 };
 
 #endif /* user_h */

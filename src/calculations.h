@@ -10,8 +10,8 @@
 class Calculations {
 private:
 
-	double monthlyProfit;
-  double transferAmount;
+	double monthlyProfit();
+  double transferAmount();
 
 public:
 

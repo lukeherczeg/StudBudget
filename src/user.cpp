@@ -7,7 +7,7 @@
 #include <string>
 #include <cstdlib>
 #include <iostream>
-//#include "Account.h"
+#include "account.h"
 #include "user.h"
 
 using namespace std;
@@ -24,5 +24,3 @@ string User::getUsername(){
 string User::getPassword(){
 	return this->password;
 }
-
-
