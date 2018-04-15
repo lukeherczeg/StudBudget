@@ -34,8 +34,9 @@ public:
     void setCheckingAccountNumber(double x);
     double getCheckingAccountNumber();
     double getAccountNumber();
-    double deposite(double x);
-    void enterExpenses(Expenses x);
+    double deposit(double x);
+    double withdraw(double x);
+    //void enterExpenses(Expenses x);
     void transfer(User x);
 };
 

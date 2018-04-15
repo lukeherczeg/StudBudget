@@ -39,3 +39,11 @@ void Account::setCheckingAccountNumber(double checkingAccountNumber){
 double Account::getCheckingAccountNumber(){
   return this->checkingAccountNumber;
 }
+
+double Account::deposit(double depositAmount){
+  return 0.0; //placeholder - have to include this in calculations and call specific accounts
+}
+
+double Account::withdraw(double withdrawlAmound){
+  return 0.0; //placeholder - have to include this in calculations and call specific accounts
+}
