@@ -12,9 +12,11 @@
 
 class Authenticator{
 private:
-	std::vector<User> users;
-	string getUsername(int i);
-	string getPassword(int i);
+	std::map<User, int>::iterator it;
+	std::map<User, int> users;
+	//std::vector<User> users;
+	//string getUsername(int i);
+	//string getPassword(int i);
 public:
 	Authenticator(User user);
 	void logIn(bool & finished);
