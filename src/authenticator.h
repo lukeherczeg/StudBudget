@@ -4,25 +4,25 @@
  *      Author: Luke H
  */
 #include "user.h"
-#include <string>
-#include <vector>
+#include <map>
 
 #ifndef AUTHENTICATOR_H_
 #define AUTHENTICATOR_H_
 
 class Authenticator{
 private:
-	std::map<User, int>::iterator it;
-	std::map<User, int> users;
+	map<User*, int>::iterator it;
+	map<User*, int> users;
+	User * currentUser;
 	//std::vector<User> users;
 	//string getUsername(int i);
 	//string getPassword(int i);
 public:
 	Authenticator();
-	User logIn(string username, string password, bool & finished);
+	void logIn(string username, string password, bool & finished);
 	void signUp(string username, string password);
 	void printUsers(); // temporary
-	User authenticate();
+	User * authenticate();
 };
 
 

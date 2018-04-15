@@ -10,6 +10,8 @@
 #include <iterator>
 #include <fstream>
 #include <istream>
+#include <string>
+#include <vector>
 using namespace std;
 #include "authenticator.h"
 #include "user.h"
@@ -34,7 +36,7 @@ int characterCountUntilSpace(std::string word) // This is done, functions well.
     return count;
 }
 
-User Authenticator::logIn(string username, string password, bool & finished){
+void Authenticator::logIn(string username, string password, bool & finished){
 	string tempUser;
 	string auth = "Username: " + username + "    Password: " + password;
 
@@ -43,10 +45,10 @@ User Authenticator::logIn(string username, string password, bool & finished){
 
 	readData.open("authData.txt");
 	this->it = this->users.begin();
-	User currentUser = this->it->first;
+	this->currentUser = this->it->first;
 
 	while(getline(readData, tempUser)){
-		currentUser = this->it->first;
+		this->currentUser = this->it->first;
 		if(tempUser == auth){
 			login = true;
 			break;
@@ -56,7 +58,6 @@ User Authenticator::logIn(string username, string password, bool & finished){
 	if(login){
 		cout << "You're in! :)" << endl;
 		finished = true;
-		return currentUser;
 	}
 	else
 		cout << "Didn't find your username or password. Please sign up." << endl;
@@ -119,7 +120,7 @@ void Authenticator::printUsers(){
 	readData.close();
 }
 
-User Authenticator::authenticate(){
+User * Authenticator::authenticate(){
 	string username = "";
 	string password = "";
 	int choice = 0;
@@ -150,7 +151,7 @@ User Authenticator::authenticate(){
 				cout << "Username : "; cin >> username;
 				cout << "Password : "; cin >> password;
 
-				return this->logIn(username, password, finished);
+				this->logIn(username, password, finished);
 				break;
 			case 2:
 				cout << "Username : "; cin >> username;
@@ -179,6 +180,7 @@ User Authenticator::authenticate(){
 		}
 		count = 0;
 	}
+	return this->currentUser;
 }
 
 
