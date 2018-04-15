@@ -1,21 +1,11 @@
-//
-//  account.h
-//  cop3503_termproject
-//
-//  Created by Madeline Farina on 3/23/18.
-//  Copyright © 2018 Madeline Farina. All rights reserved.
-//
+/*
+ * account.cpp
+ *
+ *  Created on: Apr 15, 2018
+ *      Author: Luke H
+ */
 
-#ifndef account_h
-#define account_h
-
-#include <string>
-#include <cstdlib>
-#include <iostream>
-#include "expenses.h"
-#include "user.h"
-
-class Account {
+/*class Account {
 
 private:
     double startBalance;
@@ -32,6 +22,9 @@ public:
     double deposite(double x);
     void enterExpenses(Expenses x);
     void transfer(User x);
-};
+};*/
 
-#endif /* account_h */
+
+
+
+
