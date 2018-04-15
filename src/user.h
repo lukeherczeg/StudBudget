@@ -5,12 +5,13 @@
 //  Created by Madeline Farina on 3/23/18.
 //  Copyright © 2018 Madeline Farina. All rights reserved.
 //
+#ifndef user_h
+#define user_h
+
 using namespace std;
 #include <string>
 #include "account.h"
 
-#ifndef user_h
-#define user_h
 
 class User {
 
