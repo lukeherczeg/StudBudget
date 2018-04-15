@@ -6,9 +6,9 @@
 
 int main() {
 	Authenticator * authenticator = new Authenticator;
-	User * user = new User();
+	User * user;
 	authenticator->authenticate();
 	user = authenticator->getUser();
-	std::cout << user->getUsername() << "  " << user->getPassword() << std::endl;
+	std::cout << user->getUsername() << "," << user->getPassword() << std::endl;
   return 0;
 }
