@@ -3,9 +3,9 @@
 //  Created by Madeline Farina on 4/13/18 (friday the 13th <3)
 
 #include "calculations.h"
-#include "expenses.cpp"
-#include "account.cpp"
-#include "desiredBudget.cpp"
+#include "expenses.h"
+#include "account.h"
+#include "desiredBudget.h"
 //should I include the .h files of the above files?
 #include <iostream>
 #include <string>

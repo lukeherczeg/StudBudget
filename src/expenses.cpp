@@ -1,38 +1,49 @@
 #include "expenses.h"
 
-public void setFoodCost(double food) {
-  foodCost = food;
+void Expenses::setFoodCost(double food) {
+	this->foodCost = food;
 }
-public double getFoodCost() {
-  return foodCost;
+
+double Expenses::getFoodCost() {
+	return this->foodCost;
 }
-public void setRent(double rent) {
-  rentCost = rent;
+
+void Expenses::setRentCost(double rent) {
+	this->rentCost = rent;
 }
-public double getRent() {
-  return foodCost;
+
+double Expenses::getRentCost() {
+	return this->rentCost;
 }
-public void setEntertainmentCost(double entertainment) {
-  entertainmentCost = entertainment;
+
+void Expenses::setEntertainmentCost(double entertainment) {
+	this->entertainmentCost = entertainment;
 }
-public double getEntertainmentCost() {
-  return entertainmentCost;
+
+double Expenses::getEntertainmentCost() {
+	return this->entertainmentCost;
 }
-public void setTuitionCost(double tuition) {
-  tuitionCost = tuition;
+
+void Expenses::setTuitionCost(double tuition) {
+	this->tuitionCost = tuition;
 }
-public double getTutionCost() {
-  return tuitionCost;
+
+double Expenses::getTuitionCost() {
+	return this->tuitionCost;
 }
-public void setSavingsCost(double savings) {
-  savingsCost = savings;
+
+void Expenses::setSavingsCost(double savings) {
+	this->savingsCost = savings;
 }
-public double getSavingsCost() {
-  return savingsCost;
+
+double Expenses::getSavingsCost() {
+	return this->savingsCost;
 }
-public void setMiscCost(double misc) {
-  miscCost = misc;
+
+void Expenses::setMiscCost(double misc) {
+	this->miscCost = misc;
 }
-public double getMiscCost() {
-  return miscCost;
+
+double Expenses::getMiscCost() {
+	return this->miscCost;
 }

@@ -1,38 +1,49 @@
 #include "desiredBudget.h"
 
-public void setFoodBudget(double food) {
-  foodBudget = food;
+void DesiredBudget::setFoodBudget(double food) {
+	this->foodBudget = food;
 }
-public double getFoodBudget() {
-  return foodBudget;
+
+double DesiredBudget::getFoodBudget() {
+	return this->foodBudget;
 }
-public void setRent(double rent) {
-  rentBudget = rent;
+
+void DesiredBudget::setRentBudget(double rent) {
+	this->rentBudget = rent;
 }
-public double getRent() {
-  return foodBudget;
+
+double DesiredBudget::getRentBudget() {
+	return this->rentBudget;
 }
-public void setEntertainmentBudget(double entertainment) {
-  entertainmentBudget = entertainment;
+
+void DesiredBudget::setEntertainmentBudget(double entertainment) {
+	this->entertainmentBudget = entertainment;
 }
-public double getEntertainmentBudget() {
-  return entertainmentBudget;
+
+double DesiredBudget::getEntertainmentBudget() {
+	return this->entertainmentBudget;
 }
-public void setTuitionBudget(double tuition) {
-  tuitionBudget = tuition;
+
+void DesiredBudget::setTuitionBudget(double tuition) {
+	this->tuitionBudget = tuition;
 }
-public double getTutionBudget() {
-  return tuitionBudget;
+
+double DesiredBudget::getTuitionBudget() {
+	return this->tuitionBudget;
 }
-public void setSavingsBudget(double savings) {
-  savingsBudget = savings;
+
+void DesiredBudget::setSavingsBudget(double savings) {
+	this->savingsBudget = savings;
 }
-public double getSavingsBudget() {
-  return savingsBudget;
+
+double DesiredBudget::getSavingsBudget() {
+	return this->savingsBudget;
 }
-public void setMiscBudget(double misc) {
-  miscBudget = misc;
+
+void DesiredBudget::setMiscBudget(double misc) {
+	this->miscBudget = misc;
 }
-public double getMiscBudget() {
-  return miscBudget;
+
+double DesiredBudget::getMiscBudget() {
+	return this->miscBudget;
 }

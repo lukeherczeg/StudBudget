@@ -18,7 +18,7 @@ private:
     string name;
     string username;
     string password;
-    Account account;
+    //Account account;
 
 public:
     User(string username, string password);
