@@ -49,5 +49,5 @@ double Expenses::getMiscCost() {
 }
 
 double totalExpenses(){
-	return getFoodCost + getRentCost + getEntertainmentCost + getTuitionCost + getSavingsCost + getMiscCost;
+	return getFoodCost() + getRentCost() + getEntertainmentCost() + getTuitionCost() + getSavingsCost() + getMiscCost();
 }
