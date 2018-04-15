@@ -23,6 +23,7 @@ public:
     void enterExpenses(Expenses x);
     void transfer(User x);
 };*/
+#include "account.h"
 
 void Account::setStartBalance(double startBalance){
   this->startBalance = startBalance;
