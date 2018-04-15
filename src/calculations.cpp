@@ -7,7 +7,6 @@
 #include "account.h"
 #include "desiredBudget.h"
 #include "user.h"
-//should I include the .h files of the above files?
 #include <iostream>
 #include <string>
 #include <fstream>

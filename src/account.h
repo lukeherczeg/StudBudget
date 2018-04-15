@@ -20,7 +20,7 @@ class Account {
 private:
     double startBalance;
     double incomingSalary;
-    Expenses expenses; //can't uncomment until Expenses class is created
+    Expenses expenses; 
     double savingAccountNumber;
     double checkingAccountNumber;
 
