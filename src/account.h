@@ -20,7 +20,8 @@ class Account {
 private:
     double startBalance;
     double incomingSalary;
-    Expenses expenses; 
+    Expenses expenses;
+    User user;
     double savingAccountNumber;
     double checkingAccountNumber;
 
