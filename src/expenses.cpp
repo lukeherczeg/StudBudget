@@ -47,3 +47,7 @@ void Expenses::setMiscCost(double misc) {
 double Expenses::getMiscCost() {
 	return this->miscCost;
 }
+
+double totalExpenses(){
+	return getFoodCost + getRentCost + getEntertainmentCost + getTuitionCost + getSavingsCost + getMiscCost;
+}

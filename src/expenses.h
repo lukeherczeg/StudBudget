@@ -23,6 +23,7 @@ public:
   double getSavingsCost();
   void setMiscCost(double misc);
   double getMiscCost();
+  double totalExpenses();
 };
 
 #endif

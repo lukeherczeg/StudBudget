@@ -12,6 +12,8 @@ private:
 
 	double monthlyProfit();
   double transferAmount();
+	Account account;
+	Expenses expenses;
 
 public:
 
