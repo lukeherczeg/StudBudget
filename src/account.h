@@ -27,8 +27,13 @@ private:
 
 public:
     void setStartBalance(double x);
+    double getStartBalance();
     void setIncomingSalary(double x);
     double getIncomingSalary();
+    void setSavingAccountNumber(double x);
+    double getSavingAccountNumber();
+    void setCheckingAccountNumber(double x);
+    double getCheckingAccountNumber();
     double getAccountNumber();
     double deposite(double x);
     void enterExpenses(Expenses x);
