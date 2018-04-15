@@ -22,7 +22,7 @@ public:
 	User logIn(string username, string password, bool & finished);
 	void signUp(string username, string password);
 	void printUsers(); // temporary
-	void authenticate();
+	User authenticate();
 };
 
 

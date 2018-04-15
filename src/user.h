@@ -23,9 +23,8 @@ private:
 
 public:
     User(string username, string password);
+    User();
     void setName(string x);
-    string getUsername();
-    string getPassword();
     string getName();
 
 };

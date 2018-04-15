@@ -59,14 +59,12 @@ User Authenticator::logIn(string username, string password, bool & finished){
 		return currentUser;
 	}
 	else
-		cout << "Didn't find your username. Please sign up." << endl;
+		cout << "Didn't find your username or password. Please sign up." << endl;
 	readData.close();
-	return 0;
 }
 
 void Authenticator::signUp(string username, string password){
 	ifstream readData;
-	int i = 0;
 	bool exists = false;
 	string tempUser, tempUsername, tempPassword;
 	int passwordStart, tempPasswordLength, tempUsernameLength;
@@ -121,7 +119,7 @@ void Authenticator::printUsers(){
 	readData.close();
 }
 
-void Authenticator::authenticate(){
+User Authenticator::authenticate(){
 	string username = "";
 	string password = "";
 	int choice = 0;
@@ -152,7 +150,7 @@ void Authenticator::authenticate(){
 				cout << "Username : "; cin >> username;
 				cout << "Password : "; cin >> password;
 
-				this->logIn(username, password, finished);
+				return this->logIn(username, password, finished);
 				break;
 			case 2:
 				cout << "Username : "; cin >> username;
@@ -180,9 +178,6 @@ void Authenticator::authenticate(){
 				break;
 		}
 		count = 0;
-		if(finished){
-
-		}
 	}
 }
 

@@ -13,7 +13,6 @@
 #include <cstdlib>
 #include <iostream>
 #include "expenses.h"
-#include "user.h"
 
 class Account {
 

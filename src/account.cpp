@@ -6,6 +6,7 @@
  */
 
 #include "account.h"
+#include "user.h"
 
 void Account::setStartBalance(double startBalance){
   this->startBalance = startBalance;
