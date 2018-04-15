@@ -17,14 +17,6 @@ using namespace std;
 #include "user.h"
 
 
-/*string Authenticator::getPassword(int i){
-	return this->users[i]->first.getPassword();
-}
-
-string Authenticator::getUsername(int i){
-	return this->users[i].getUsername();
-}
-*/
 int characterCountUntilSpace(std::string word) // This is done, functions well.
 {
     int count = 0;
@@ -91,7 +83,7 @@ void Authenticator::signUp(string username, string password){
 	}
 
 	if(!exists){
-		User newUser(username, password);
+		User * newUser = new User(username, password);
 		this->users[newUser]++;
 		string auth = "Username: " + username + "    Password: " + password;
 		//			  Length 10	^			      Length 14 ^
@@ -120,7 +112,7 @@ void Authenticator::printUsers(){
 	readData.close();
 }
 
-User * Authenticator::authenticate(){
+void Authenticator::authenticate(){
 	string username = "";
 	string password = "";
 	int choice = 0;
@@ -180,7 +172,9 @@ User * Authenticator::authenticate(){
 		}
 		count = 0;
 	}
-	return this->currentUser;
 }
 
+User * Authenticator::getUser(){
+	return this->currentUser;
+}
 

@@ -48,6 +48,6 @@ double Expenses::getMiscCost() {
 	return this->miscCost;
 }
 
-double totalExpenses(){
-	return getFoodCost() + getRentCost() + getEntertainmentCost() + getTuitionCost() + getSavingsCost() + getMiscCost();
-}
+//double totalExpenses(){
+//	return this->getFoodCost() + this->getRentCost() + this->getEntertainmentCost() + this->getTuitionCost() + this->getSavingsCost() + this->getMiscCost();
+//}

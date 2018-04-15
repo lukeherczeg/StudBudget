@@ -14,9 +14,9 @@
 
 using namespace std;
 
-double Calculations::monthlyProfit(){
-	return this->account.getIncomingSalary() - this->expenses.totalExpenses();
-}
+//double Calculations::monthlyProfit(){
+//	return this->account->getIncomingSalary() - this->expenses->totalExpenses();
+//}
 
 double Calculations::transferAmount(){
   return 0.0;

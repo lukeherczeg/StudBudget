@@ -18,11 +18,11 @@ private:
 	//string getUsername(int i);
 	//string getPassword(int i);
 public:
-	Authenticator();
 	void logIn(string username, string password, bool & finished);
 	void signUp(string username, string password);
 	void printUsers(); // temporary
-	User * authenticate();
+	User * getUser();
+	void authenticate();
 };
 
 

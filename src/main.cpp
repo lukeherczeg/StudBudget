@@ -5,9 +5,10 @@
 #include "expenses.h"
 
 int main() {
-  Authenticator * authenticator = new Authenticator;
-  User * user = new User();
-  user = authenticator->authenticate;
-  std::cout << user->getUsername() << "  " << user->getPassword() << std::endl;
+	Authenticator * authenticator = new Authenticator;
+	User * user = new User();
+	authenticator->authenticate();
+	user = authenticator->getUser();
+	std::cout << user->getUsername() << "  " << user->getPassword() << std::endl;
   return 0;
 }

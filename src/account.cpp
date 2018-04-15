@@ -4,9 +4,12 @@
  *  Created on: Apr 15, 2018
  *      Author: Luke H
  */
-
-#include "account.h"
+#include <string>
+#include <cstdlib>
+#include <iostream>
+#include "expenses.h"
 #include "user.h"
+#include "account.h"
 
 void Account::setStartBalance(double startBalance){
   this->startBalance = startBalance;

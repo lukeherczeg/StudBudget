@@ -3,6 +3,8 @@
 
 //just for test
 #include "user.h"
+#include "expenses.h"
+#include "account.h"
 #include <string>
 #include <cstdlib>
 #include <iostream>
@@ -11,9 +13,9 @@ class Calculations {
 private:
 
 	double monthlyProfit();
-  double transferAmount();
-	Account account;
-	Expenses expenses;
+	double transferAmount();
+	Account * account;
+	Expenses * expenses;
 
 public:
 

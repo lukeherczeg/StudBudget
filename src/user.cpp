@@ -4,13 +4,10 @@
  *  Created on: Mar 29, 2018
  *      Author: Luke H
  */
-#include <string>
 #include <cstdlib>
 #include <iostream>
-#include "account.h"
 #include "user.h"
-
-using namespace std;
+#include "account.h"
 
 User::User(string username, string password){
 	this->username = username;

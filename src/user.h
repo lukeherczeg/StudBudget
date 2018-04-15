@@ -7,11 +7,9 @@
 //
 #ifndef user_h
 #define user_h
-
-using namespace std;
 #include <string>
-#include "account.h"
-
+using namespace std;
+class Account; // forward declaration
 
 class User {
 
@@ -19,11 +17,10 @@ private:
     string name;
     string username;
     string password;
-    Account account;
+    Account * account;
 
 public:
     User(string username, string password);
-    User();
     void setName(string x);
     string getUsername();
     string getPassword();
