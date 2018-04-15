@@ -18,9 +18,9 @@ private:
 	//string getUsername(int i);
 	//string getPassword(int i);
 public:
-	Authenticator(User user);
-	void logIn(bool & finished);
-	void signUp();
+	Authenticator();
+	User logIn(string username, string password, bool & finished);
+	void signUp(string username, string password);
 	void printUsers(); // temporary
 	void authenticate();
 };

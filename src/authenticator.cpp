@@ -34,33 +34,37 @@ int characterCountUntilSpace(std::string word) // This is done, functions well.
     return count;
 }
 
-void Authenticator::logIn(bool & finished){
+User Authenticator::logIn(string username, string password, bool & finished){
 	string tempUser;
-	this->it = this->users.begin();
-	User currentUser = this->it->first;
-
-	string auth = "Username: " + currentUser.getUsername() + "    Password: " + currentUser.getPassword();
+	string auth = "Username: " + username + "    Password: " + password;
 
 	bool login = false;
 	ifstream readData;
 
 	readData.open("authData.txt");
+	this->it = this->users.begin();
+	User currentUser = this->it->first;
+
 	while(getline(readData, tempUser)){
+		currentUser = this->it->first;
 		if(tempUser == auth){
 			login = true;
 			break;
 		}
+		this->it++;
 	}
 	if(login){
 		cout << "You're in! :)" << endl;
 		finished = true;
+		return currentUser;
 	}
 	else
 		cout << "Didn't find your username. Please sign up." << endl;
 	readData.close();
+	return 0;
 }
 
-void Authenticator::signUp(){
+void Authenticator::signUp(string username, string password){
 	ifstream readData;
 	int i = 0;
 	bool exists = false;
@@ -69,10 +73,8 @@ void Authenticator::signUp(){
 	int usernameStart = 10;
 
 	readData.open("authData.txt");
-	this->it = this->users.begin();
-	User currentUser = this->it->first;
+
 	while(getline(readData, tempUser)){
-		currentUser = this->it->first;
 
 		tempUsernameLength = characterCountUntilSpace(tempUser.substr(usernameStart));
 		passwordStart = 24 + tempUsernameLength;  //24 is the length of the formatting string up to that point.
@@ -82,19 +84,18 @@ void Authenticator::signUp(){
 		tempPassword = tempUser.substr(passwordStart, tempPasswordLength);
 
 
-		if(tempUsername == currentUser.getUsername() || tempPassword == currentUser.getPassword() ){
+		if(tempUsername == username || tempPassword == password ){
 			cout << "Username or password already in use! Try something else." << endl;
 			exists = true;
 			break;
 		}
-		this->it++;
 	}
 
 	if(!exists){
-		User newUser(tempUsername, tempPassword);
+		User newUser(username, password);
 		this->users[newUser]++;
-		string auth = "Username: " + tempUsername + "    Password: " + tempPassword;
-		//			  Length 10	^			              	  Length 14 ^
+		string auth = "Username: " + username + "    Password: " + password;
+		//			  Length 10	^			      Length 14 ^
 		ofstream writeData;
 		writeData.open ("authData.txt", ios_base::app);
 		writeData << auth << endl;
@@ -151,13 +152,13 @@ void Authenticator::authenticate(){
 				cout << "Username : "; cin >> username;
 				cout << "Password : "; cin >> password;
 
-				this->logIn(finished);
+				this->logIn(username, password, finished);
 				break;
 			case 2:
 				cout << "Username : "; cin >> username;
 				cout << "Password : "; cin >> password;
 
-				this->signUp();
+				this->signUp(username, password);
 				break;
 			case 3:
 				this->printUsers();
@@ -179,6 +180,9 @@ void Authenticator::authenticate(){
 				break;
 		}
 		count = 0;
+		if(finished){
+
+		}
 	}
 }
 
