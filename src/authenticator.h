@@ -18,6 +18,7 @@ public:
 	void logIn(string username, string password, bool & finished);
 	void signUp(string username, string password);
 	void printUsers(); // temporary
+	void printUserObjects(); // for testing
 	void fillMapOfUsers();
 	User * getUser();
 	void authenticate();

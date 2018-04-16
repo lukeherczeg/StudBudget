@@ -9,6 +9,7 @@
 int main() {
 	Authenticator * authenticator = new Authenticator;
 	authenticator->fillMapOfUsers();
+	authenticator->printUserObjects();
 	authenticator->authenticate();
 
 	User * user = authenticator->getUser();
