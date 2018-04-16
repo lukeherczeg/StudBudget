@@ -1,6 +1,6 @@
 #include "expenses.h"
 
-Expenses::expenses(){
+Expenses::Expenses(){
 	this->foodCost = 0.0;
 	this->rentCost = 0.0;
 	this->entertainmentCost = 0.0;

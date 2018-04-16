@@ -11,6 +11,7 @@ private:
   double miscCost;
 
 public:
+  Expenses();
   void setFoodCost(double food);
   double getFoodCost();
   void setRentCost(double rent);
