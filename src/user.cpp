@@ -14,6 +14,10 @@ User::User(string username, string password){
 	this->password = password;
 }
 
+Account * User::getAccount(){
+	return this->account;
+}
+
 string User::getUsername(){
 	return this->username;
 }

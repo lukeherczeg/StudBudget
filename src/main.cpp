@@ -13,7 +13,12 @@ int main() {
 	authenticator->authenticate();
 
 	User * user = authenticator->getUser();
-
 	std::cout << "\nYou're now logged in as " << user->getUsername() << "!"<< std::endl;
+
+
+	user->getAccount()->writeData(user->getUsername());
+	user->getAccount()->printData();
+
+
 	return 0;
 }

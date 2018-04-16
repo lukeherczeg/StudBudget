@@ -11,18 +11,26 @@
 
 #include "expenses.h"
 #include "user.h"
+#include <map>
+#include <vector>
 
 class Account {
 
 private:
     double startBalance;
     double incomingSalary;
-    map<const string, Expenses*> users;
-    //Expenses expenses;
+    const vector<string> months = {"January", "February", "March", "April", "May", "June", "July",
+   								"August", "September", "October", "November", "December"};
+    map<const string, Expenses*> monthExpenses {{"January", NULL}, {"February", NULL}, {"March", NULL}, {"April", NULL}, {"May", NULL}, {"June", NULL}, {"July", NULL},
+    											{"August", NULL}, {"September", NULL}, {"October", NULL}, {"November", NULL}, {"December", NULL}};
+    map<const string, Expenses*>::iterator it;
     double savingAccountNumber;
     double checkingAccountNumber;
 
 public:
+    Account();
+    void printData();
+    void writeData(string username);
     void setStartBalance(double x);
     double getStartBalance();
     void setIncomingSalary(double x);
