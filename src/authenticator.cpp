@@ -150,6 +150,7 @@ void Authenticator::authenticate(){
 
 	while(!finished) {
 		while (true){
+			cout << "\nYour choice: ";
 			cin >> choice;
 			if(cin.fail()){
 				cin.clear(); //This corrects the stream.
