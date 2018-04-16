@@ -7,6 +7,7 @@
 #include <string>
 #include <cstdlib>
 #include <iostream>
+#include <map>
 #include "expenses.h"
 #include "user.h"
 #include "account.h"

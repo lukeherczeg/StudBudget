@@ -17,7 +17,8 @@ class Account {
 private:
     double startBalance;
     double incomingSalary;
-    Expenses expenses;
+    map<const string, Expenses*> users;
+    //Expenses expenses;
     double savingAccountNumber;
     double checkingAccountNumber;
 
