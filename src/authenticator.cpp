@@ -17,7 +17,7 @@ using namespace std;
 #include "user.h"
 
 
-int characterCountUntilSpace(std::string word) // This is done, functions well.
+int characterCountUntilSpace(string word) // This is done, functions well.
 {
     int count = 0;
     for(unsigned int i = 0; i < word.size(); i++) {
@@ -28,32 +28,36 @@ int characterCountUntilSpace(std::string word) // This is done, functions well.
     return count;
 }
 
-void Authenticator::logIn(string username, string password, bool & finished){
-	string tempUser, tempUsername, tempPassword;
-	int passwordStart, tempPasswordLength, tempUsernameLength;
-	string auth = "Username: " + username + "    Password: " + password;
+User * Authenticator::getUser(){
+	return this->currentUser;
+}
 
+void Authenticator::fillMapOfUsers(){
+	string tempUser, tempUsername, tempPassword;
+	int passwordStart, tempPasswordLength, tempUsernameLength, usernameStart = 10;
+	ifstream readData;
+	readData.open("authData.txt");
+
+	while(getline(readData, tempUser)){
+		tempUsernameLength = characterCountUntilSpace(tempUser.substr(usernameStart));
+		passwordStart = 24 + tempUsernameLength;  //24 is the length of the formatting string up to that point.
+		tempPasswordLength = characterCountUntilSpace(tempUser.substr(passwordStart));
+
+		tempUsername = tempUser.substr(usernameStart, tempUsernameLength);
+		tempPassword = tempUser.substr(passwordStart, tempPasswordLength);
+
+		User * newUser = new User(tempUsername, tempPassword);
+		this->users[newUser]++;
+	}
+	readData.close();
+}
+
+void Authenticator::logIn(string username, string password, bool & finished){
+	string tempUser;
 	bool login = false;
 	ifstream readData;
 
-	if(this->users.empty()){
-		readData.open("authData.txt");
-		int usernameStart = 10;
-
-		while(getline(readData, tempUser)){
-
-			tempUsernameLength = characterCountUntilSpace(tempUser.substr(usernameStart));
-			passwordStart = 24 + tempUsernameLength;  //24 is the length of the formatting string up to that point.
-			tempPasswordLength = characterCountUntilSpace(tempUser.substr(passwordStart));
-
-			tempUsername = tempUser.substr(usernameStart, tempUsernameLength);
-			tempPassword = tempUser.substr(passwordStart, tempPasswordLength);
-
-			User * newUser = new User(tempUsername, tempPassword);
-			this->users[newUser]++;
-		}
-		readData.close();
-	}
+	string auth = "Username: " + username + "    Password: " + password;
 
 	tempUser = "";
 	readData.open("authData.txt");
@@ -84,13 +88,11 @@ void Authenticator::signUp(string username, string password){
 	ifstream readData;
 	bool exists = false;
 	string tempUser, tempUsername, tempPassword;
-	int passwordStart, tempPasswordLength, tempUsernameLength;
-	int usernameStart = 10;
+	int passwordStart, tempPasswordLength, tempUsernameLength, usernameStart = 10;
 
 	readData.open("authData.txt");
 
 	while(getline(readData, tempUser)){
-
 		tempUsernameLength = characterCountUntilSpace(tempUser.substr(usernameStart));
 		passwordStart = 24 + tempUsernameLength;  //24 is the length of the formatting string up to that point.
 		tempPasswordLength = characterCountUntilSpace(tempUser.substr(passwordStart));
@@ -113,7 +115,7 @@ void Authenticator::signUp(string username, string password){
 		string auth = "Username: " + username + "    Password: " + password;
 		//			  Length 10	^			      Length 14 ^
 		ofstream writeData;
-		writeData.open ("authData.txt", ios_base::app);
+		writeData.open ("authData.txt", ios_base::app); // Appends new data to the file
 		writeData << auth << endl;
 
 		cout << "Account created! You can now log in." << endl;
@@ -138,11 +140,8 @@ void Authenticator::printUsers(){
 }
 
 void Authenticator::authenticate(){
-	string username = "";
-	string password = "";
-	int choice = 0;
-	int count = 0;
-	string choice2 = "";
+	string username = "", password = "", choice2 = "";
+	int choice = 0, count = 0;
 	bool finished = false;
 
 	cout << "\nWelcome to the Budgeting App. Sign up below! \nIf you have an account already, please enter your username and password.\n" << endl;
@@ -150,8 +149,7 @@ void Authenticator::authenticate(){
 
 	while(!finished) {
 		while (true){
-			cout << "\nYour choice: ";
-			cin >> choice;
+			cout << "\nYour choice: "; cin >> choice;
 			if(cin.fail()){
 				cin.clear(); //This corrects the stream.
 				cin.ignore(); //This skips the left over stream data.
@@ -159,9 +157,7 @@ void Authenticator::authenticate(){
 					cout << "Please enter an Integer only." << endl;
 				count++;
 			}
-			else{
-				break;
-			}
+			else break;
 		}
 
 		switch(choice){
@@ -193,14 +189,10 @@ void Authenticator::authenticate(){
 				finished = true;
 				break;
 			default:
-				cout << "WRONG." << endl;
+				cout << "Please enter an integer 1-5!" << endl;
 				break;
 		}
 		count = 0;
 	}
-}
-
-User * Authenticator::getUser(){
-	return this->currentUser;
 }
 
