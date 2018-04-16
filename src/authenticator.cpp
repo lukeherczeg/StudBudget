@@ -72,12 +72,11 @@ void Authenticator::logIn(string username, string password, bool & finished){
 			this->it++;
 	}
 
-	if(login){
-		cout << "You're in! :)" << endl;
+	if(login)
 		finished = true;
-	}
 	else
 		cout << "Didn't find your username or password. Please sign up." << endl;
+
 	readData.close();
 }
 
@@ -146,13 +145,12 @@ void Authenticator::authenticate(){
 	string choice2 = "";
 	bool finished = false;
 
-	cout << "\nWelcome to the Budgeting app. Sign up below! \nIf you have an account already, please enter your username and password.\n" << endl;
+	cout << "\nWelcome to the Budgeting App. Sign up below! \nIf you have an account already, please enter your username and password.\n" << endl;
 	cout << "\t1. Log in\n\t2. Sign up\n\t3. Print users\n\t4. Clear all users\n\t5. Exit" << endl;
 
 	while(!finished) {
 		while (true){
 			cin >> choice;
-			//choice = 1;
 			if(cin.fail()){
 				cin.clear(); //This corrects the stream.
 				cin.ignore(); //This skips the left over stream data.
