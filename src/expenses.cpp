@@ -1,5 +1,14 @@
 #include "expenses.h"
 
+Expenses::expenses(){
+	this->foodCost = 0.0;
+	this->rentCost = 0.0;
+	this->entertainmentCost = 0.0;
+	this->tuitionCost = 0.0;
+	this->savingsCost = 0.0;
+	this->miscCost = 0.0;
+}
+
 void Expenses::setFoodCost(double food) {
 	this->foodCost = food;
 }
