@@ -54,7 +54,7 @@ void Authenticator::fillMapOfUsers(){
 
 void Authenticator::printUserObjects(){
 	for(this->it = this->users.begin(); this->it != this->users.end(); this->it++){
-		cout << this->it->first << "  ";
+		cout << "Memory: "<< this->it->first << ", user ";
 		cout << this->it->first->getUsername() << endl;
 	}
 }
@@ -74,7 +74,6 @@ void Authenticator::logIn(string username, string password, bool & finished){
 
 	while(getline(readData, tempUser)){
 		this->currentUser = this->it->first;
-		cout << this->currentUser->getUsername() << endl;
 		if(tempUser == auth){
 			login = true;
 			break;

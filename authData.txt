@@ -1,4 +1,3 @@
-Username: a    Password: b
-Username: c    Password: d
-Username: e    Password: f
-Username: g    Password: h
+Username: Luke    Password: user1
+Username: Madeline    Password: user2
+Username: Kayla    Password: user3
