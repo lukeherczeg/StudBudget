@@ -8,10 +8,8 @@
 
 int main() {
 	Authenticator * authenticator = new Authenticator;
-	User * user;
 	authenticator->authenticate();
-
-	user = authenticator->getUser();
+	User * user = authenticator->getUser(); // TODO: there is a problem with logging in after signing up
 
 	std::cout << "\nYou're now logged in as " << user->getUsername() << "!"<< std::endl;
 	return 0;
