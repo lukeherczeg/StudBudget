@@ -29,13 +29,36 @@ int characterCountUntilSpace(std::string word) // This is done, functions well.
 }
 
 void Authenticator::logIn(string username, string password, bool & finished){
-	string tempUser;
+	string tempUser, tempUsername, tempPassword;
+	int passwordStart, tempPasswordLength, tempUsernameLength;
 	string auth = "Username: " + username + "    Password: " + password;
 
 	bool login = false;
 	ifstream readData;
 
+	if(this->users.empty()){
+		readData.open("authData.txt");
+		int usernameStart = 10;
+
+		while(getline(readData, tempUser)){
+
+			tempUsernameLength = characterCountUntilSpace(tempUser.substr(usernameStart));
+			passwordStart = 24 + tempUsernameLength;  //24 is the length of the formatting string up to that point.
+			tempPasswordLength = characterCountUntilSpace(tempUser.substr(passwordStart));
+
+			tempUsername = tempUser.substr(usernameStart, tempUsernameLength);
+			tempPassword = tempUser.substr(passwordStart, tempPasswordLength);
+
+			User * newUser = new User(tempUsername, tempPassword);
+			this->users[newUser]++;
+		}
+		readData.close();
+	}
+
+	tempUser = "";
 	readData.open("authData.txt");
+
+
 	this->it = this->users.begin();
 	this->currentUser = this->it->first;
 
@@ -45,8 +68,10 @@ void Authenticator::logIn(string username, string password, bool & finished){
 			login = true;
 			break;
 		}
-		this->it++;
+		if(this->it != this->users.end())
+			this->it++;
 	}
+
 	if(login){
 		cout << "You're in! :)" << endl;
 		finished = true;
@@ -81,6 +106,7 @@ void Authenticator::signUp(string username, string password){
 			break;
 		}
 	}
+
 
 	if(!exists){
 		User * newUser = new User(username, password);
@@ -126,6 +152,7 @@ void Authenticator::authenticate(){
 	while(!finished) {
 		while (true){
 			cin >> choice;
+			//choice = 1;
 			if(cin.fail()){
 				cin.clear(); //This corrects the stream.
 				cin.ignore(); //This skips the left over stream data.

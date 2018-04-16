@@ -10,5 +10,5 @@ int main() {
 	authenticator->authenticate();
 	user = authenticator->getUser();
 	std::cout << user->getUsername() << "," << user->getPassword() << std::endl;
-  return 0;
+	return 0;
 }
