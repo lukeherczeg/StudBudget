@@ -1,7 +1,3 @@
-//
-//  user.h
-//  cop3503_termproject
-//
 //  Created by Madeline Farina on 3/23/18.
 //  Copyright © 2018 Madeline Farina. All rights reserved.
 //
@@ -21,6 +17,7 @@ private:
 
 public:
     User(string username, string password);
+    User();
     void setName(string x);
     Account * getAccount();
     string getUsername();

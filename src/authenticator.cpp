@@ -59,6 +59,13 @@ void Authenticator::printUserObjects(){
 	}
 }
 
+bool Authenticator::isUser(string username){
+	for(this->it = this->users.begin(); this->it != this->users.end(); this->it++)
+		if(this->it->first->getUsername() == username)
+			return true;
+	return false;
+}
+
 void Authenticator::logIn(string username, string password, bool & finished){
 	string tempUser;
 	bool login = false;
@@ -192,6 +199,7 @@ void Authenticator::authenticate(){
 				cin.clear();
 				break;
 			case 5:
+				this->currentUser = NULL;
 				finished = true;
 				break;
 			default:

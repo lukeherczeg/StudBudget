@@ -1,3 +1,1 @@
-Username: Luke    Password: user1
-Username: Madeline    Password: user2
-Username: Kayla    Password: user3
+Username: Luke    Password: l

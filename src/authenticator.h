@@ -20,6 +20,7 @@ public:
 	void printUsers(); // temporary
 	void printUserObjects(); // for testing
 	void fillMapOfUsers();
+	bool isUser(string username);
 	User * getUser();
 	void authenticate();
 };

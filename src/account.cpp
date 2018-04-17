@@ -15,27 +15,35 @@
 #include "expenses.h"
 #include "user.h"
 #include "account.h"
+#include "authenticator.h"
 
 
-void Account::writeData(string username){
+const vector<string> months = {"January", "February", "March", "April", "May", "June", "July",
+   						 "August", "September", "October", "November", "December"};
+
+Account::Account(){
+	for(unsigned int i = 0; i < this->monthExpenses.size(); i++)
+		this->monthExpenses[i] = new Expenses();
+	this->checkingAccountNumber = 0;
+	this->incomingSalary = 0;
+	this->savingAccountNumber = 0;
+	this->startBalance = 0;
+}
+
+void Account::writeData(string username){ // TODO THIS CAUSES A SEGFAULT. FIX IT! :D
 	ofstream writeData;
-	writeData.open ("accountData.txt", ios_base::app); // Appends new data to the file
+	writeData.open("accountData.txt", ios_base::app); // Appends new data to the file
 	writeData << username << endl;
-	for(string month: this->months){
-		writeData << month;
-		this->it = this->monthExpenses.find(month);
-		if(it->first == month){
-			for(this->it = this->monthExpenses.begin(); this->it != this->monthExpenses.end(); this->it++){
-				writeData << "FOOD: " << this->it->second->getFoodCost() << "RENT: "
-				<< this->it->second->getRentCost() << "ENTERTAINMENT: " << this->it->second->getEntertainmentCost() << "TUITION: "
-				<< this->it->second->getTuitionCost() << "SAVINGS: " << this->it->second->getSavingsCost() << "MISC: "
-				<< this->it->second->getMiscCost();
-			}
-		}
+	for(unsigned int i = 0; i < months.size(); i++){  // Months is the same size as the expenses
+		writeData << months[i];
+		writeData << "FOOD: " 			<<	this->monthExpenses[i]->getFoodCost()
+				  << "RENT: " 			<< 	this->monthExpenses[i]->getRentCost()
+				  << "ENTERTAINMENT: "  << 	this->monthExpenses[i]->getEntertainmentCost()
+				  << "TUITION: " 		<< 	this->monthExpenses[i]->getTuitionCost()
+				  << "SAVINGS: "	    << 	this->monthExpenses[i]->getSavingsCost()
+				  << "MISC: "			<< 	this->monthExpenses[i]->getMiscCost() << endl;
 	}
-	cout << "Account created! You can now log in." << endl;
 	writeData.close();
-
 }
 
 void Account::printData(){

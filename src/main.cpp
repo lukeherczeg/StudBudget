@@ -12,13 +12,16 @@ int main() {
 	authenticator->printUserObjects();
 	authenticator->authenticate();
 
-	User * user = authenticator->getUser();
-	std::cout << "\nYou're now logged in as " << user->getUsername() << "!"<< std::endl;
+	if(authenticator->getUser() != NULL){ // Used so the exit function doesn't cause an overflow.
+
+		User * user = authenticator->getUser();
+		std::string username = user->getUsername();
+		std::cout << "\nYou're logged in as " << username << "!" << std::endl;
 
 
-	user->getAccount()->writeData(user->getUsername());
-	user->getAccount()->printData();
-
+		//user->getAccount()->writeData(username); // TODO fix the segfault on this function!
+		user->getAccount()->printData();
+	}
 
 	return 0;
 }

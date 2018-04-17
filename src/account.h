@@ -11,6 +11,7 @@
 
 #include "expenses.h"
 #include "user.h"
+#include "authenticator.h"
 #include <map>
 #include <vector>
 
@@ -19,11 +20,8 @@ class Account {
 private:
     double startBalance;
     double incomingSalary;
-    const vector<string> months = {"January", "February", "March", "April", "May", "June", "July",
-   								"August", "September", "October", "November", "December"};
-    map<const string, Expenses*> monthExpenses {{"January", NULL}, {"February", NULL}, {"March", NULL}, {"April", NULL}, {"May", NULL}, {"June", NULL}, {"July", NULL},
-    											{"August", NULL}, {"September", NULL}, {"October", NULL}, {"November", NULL}, {"December", NULL}};
-    map<const string, Expenses*>::iterator it;
+    vector<Expenses*> monthExpenses;
+    vector<Expenses*>::iterator it;
     double savingAccountNumber;
     double checkingAccountNumber;
 

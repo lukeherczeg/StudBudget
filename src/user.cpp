@@ -12,6 +12,7 @@
 User::User(string username, string password){
 	this->username = username;
 	this->password = password;
+	this->account = new Account();
 }
 
 Account * User::getAccount(){
