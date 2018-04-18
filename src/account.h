@@ -28,6 +28,7 @@ private:
 public:
     Account();
     void printData();
+    bool dataExists(string username);
     void writeData(string username);
     void setStartBalance(double x);
     double getStartBalance();

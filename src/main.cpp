@@ -20,8 +20,8 @@ int main() {
 		std::string username = user->getUsername();
 		std::cout << "\nYou're logged in as " << username << "!" << std::endl;
 
+		user->getAccount()->writeData(username);
 
-		user->getAccount()->writeData(username); // TODO fix the segfault on this function!
 		user->getAccount()->printData();
 	}
 
