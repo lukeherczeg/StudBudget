@@ -21,7 +21,7 @@ private:
     double startBalance;
     double incomingSalary;
     vector<Expenses*> monthExpenses;	//vector for every month's expenses
-    //vector<Expenses*>::iterator it;
+    vector<Expenses*>::iterator it;
     double savingAccountNumber;
     double checkingAccountNumber;
 

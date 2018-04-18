@@ -34,7 +34,7 @@ void Account::writeData(string username){ // TODO THIS CAUSES A SEGFAULT. FIX IT
 	ofstream writeData;
 	writeData.open("accountData.txt", ios_base::app); // Appends new data to the file
 	writeData << username << endl;
-	for(unsigned int i = 0; i < months.size(); i++){  // Months is the same size as the expenses
+	for(unsigned int i = 0; i < months.size() - 1; i++){  // Months is the same size as the expenses
 		writeData << months[i];
 		this->monthExpenses[i] = new Expenses();	//a new object for expenses is set equal to pointer to each month's expenses 
 		writeData << "FOOD: " 			<<	this->monthExpenses[i]->getFoodCost()
