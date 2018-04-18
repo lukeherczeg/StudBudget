@@ -22,8 +22,8 @@ const vector<string> months = {"January", "February", "March", "April", "May", "
    						 "August", "September", "October", "November", "December"};
 
 Account::Account(){
-	for(unsigned int i = 0; i < this->monthExpenses.size(); i++)
-		this->monthExpenses[i] = new Expenses();
+	//for(Expenses * ex : this->monthExpenses)
+	//	this->monthExpenses.push_back(ex);
 	this->checkingAccountNumber = 0;
 	this->incomingSalary = 0;
 	this->savingAccountNumber = 0;
@@ -36,12 +36,13 @@ void Account::writeData(string username){ // TODO THIS CAUSES A SEGFAULT. FIX IT
 	writeData << username << endl;
 	for(unsigned int i = 0; i < months.size(); i++){  // Months is the same size as the expenses
 		writeData << months[i];
+		this->monthExpenses[i] = new Expenses();
 		writeData << "FOOD: " 			<<	this->monthExpenses[i]->getFoodCost()
-				  << "RENT: " 			<< 	this->monthExpenses[i]->getRentCost()
-				  << "ENTERTAINMENT: "  << 	this->monthExpenses[i]->getEntertainmentCost()
-				  << "TUITION: " 		<< 	this->monthExpenses[i]->getTuitionCost()
-				  << "SAVINGS: "	    << 	this->monthExpenses[i]->getSavingsCost()
-				  << "MISC: "			<< 	this->monthExpenses[i]->getMiscCost() << endl;
+		          << "RENT: " 			<< 	this->monthExpenses[i]->getRentCost()
+		          << "ENTERTAINMENT: "  << 	this->monthExpenses[i]->getEntertainmentCost()
+		          << "TUITION: " 		<< 	this->monthExpenses[i]->getTuitionCost()
+		          << "SAVINGS: "	    << 	this->monthExpenses[i]->getSavingsCost()
+		          << "MISC: "			<< 	this->monthExpenses[i]->getMiscCost() << endl;
 	}
 	writeData.close();
 }

@@ -66,6 +66,7 @@ void Authenticator::printUserObjects(){
 		cout << "["<< this->it->second << "] | [";
 		cout << this->it->second->getUsername() << "]"<< endl;
 	}
+	cout << "____________________________________________" << endl;
 }
 
 bool Authenticator::isUser(string username){
@@ -174,7 +175,7 @@ void Authenticator::authenticate(){
 				cin.clear(); //This corrects the stream.
 				cin.ignore(); //This skips the left over stream data.
 				if(count == 0)
-					cout << "Please enter an Integer only." << endl;
+					cout << "Please enter an integer only." << endl;
 				count++;
 			}
 			else break;
