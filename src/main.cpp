@@ -24,6 +24,5 @@ int main() {
 
 		user->getAccount()->printData();
 	}
-
 	return 0;
 }
