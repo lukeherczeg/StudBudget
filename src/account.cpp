@@ -22,8 +22,7 @@ const vector<string> months = {"January", "February", "March", "April", "May", "
    						 "August", "September", "October", "November", "December"};
 
 Account::Account(){
-	//for(Expenses * ex : this->monthExpenses)
-	//	this->monthExpenses.push_back(ex);
+	this->monthExpenses.reserve(12); // Reserve 12 because there will be 12 months
 	this->checkingAccountNumber = 0;
 	this->incomingSalary = 0;
 	this->savingAccountNumber = 0;
@@ -33,20 +32,24 @@ Account::Account(){
 void Account::writeData(string username){ // TODO THIS CAUSES A SEGFAULT. FIX IT! :D
 	ofstream writeData;
 	writeData.open("accountData.txt", ios_base::app); // Appends new data to the file
-	writeData << username << endl;
+	writeData << username << "\n\n";
 	for(unsigned int i = 0; i < months.size(); i++){  // Months is the same size as the expenses
-		writeData << months[i];
+		if(i == 1 || i == 8 || i == 10 || i == 11)
+			writeData << months[i];
+		else
+			writeData << months[i] << "\t";
 		this->monthExpenses[i] = new Expenses();	//a new object for expenses is set equal to pointer to each month's expenses 
-		writeData << "FOOD: " 			<<	this->monthExpenses[i]->getFoodCost()
-		          << "RENT: " 			<< 	this->monthExpenses[i]->getRentCost()
-		          << "ENTERTAINMENT: "  << 	this->monthExpenses[i]->getEntertainmentCost()
-		          << "TUITION: " 		<< 	this->monthExpenses[i]->getTuitionCost()
-		          << "SAVINGS: "	    << 	this->monthExpenses[i]->getSavingsCost()
-		          << "MISC: "			<< 	this->monthExpenses[i]->getMiscCost() << endl;
+		if(i != 8)
+			writeData << " ";
+		writeData << " " << "FOOD: " 			<<	this->monthExpenses[i]->getFoodCost()
+		          << " | " << "RENT: " 			<< 	this->monthExpenses[i]->getRentCost()
+		          << " | " << "ENTERTAINMENT: " << 	this->monthExpenses[i]->getEntertainmentCost()
+		          << " | " << "TUITION: " 		<< 	this->monthExpenses[i]->getTuitionCost()
+		          << " | " << "SAVINGS: "	    << 	this->monthExpenses[i]->getSavingsCost()
+		          << " | " << "MISC: "			<< 	this->monthExpenses[i]->getMiscCost() << endl;
 	}
-	writeData.close();	//for loop causes a new object to be created for each month, then each expense is printed for that
-	//month
-}
+	writeData.close();	//for loop causes a new object to be created for
+}						//each month, then each expense is printed for that month
 
 void Account::printData(){
 	ifstream readData;
