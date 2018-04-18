@@ -32,3 +32,4 @@ src/.vs/
 *.log
 *.pdb
 *.tlog
+*.vcxproj
