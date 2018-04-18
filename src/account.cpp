@@ -33,6 +33,10 @@ Account::Account(){
 	this->startBalance = 0;
 }
 
+
+// TODO , write a function to both use the data to do ::: line.replace(line.find(deleteline),deleteline.length(),"");
+// and change the field by accessing the month's index.
+
 bool Account::dataExists(string username){
 	ifstream readData;
 	string tempLine;
