@@ -24,3 +24,11 @@ src/.vs/
 # *.elf
 # *.hex
 *.out
+
+# Justin's stuff
+*.exe
+*.obj
+*.ilk
+*.log
+*.pdb
+*.tlog
