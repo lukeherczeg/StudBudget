@@ -11,10 +11,11 @@
 
 class Authenticator{
 private:
-	map<User*, int>::iterator it;
-	map<User*, int> users;
+	map<int, User*>::iterator it;
+	map<int, User*> users;
 	User * currentUser;
 public:
+	Authenticator();
 	void logIn(string username, string password, bool & finished);
 	void signUp(string username, string password);
 	void printUsers(); // temporary

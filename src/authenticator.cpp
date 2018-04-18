@@ -16,6 +16,10 @@ using namespace std;
 #include "authenticator.h"
 #include "user.h"
 
+Authenticator::Authenticator(){
+	this->currentUser = NULL;
+
+}
 
 int characterCountUntilSpace(string word) // This is done, functions well.
 {
@@ -37,31 +41,36 @@ void Authenticator::fillMapOfUsers(){
 	int passwordStart, tempPasswordLength, tempUsernameLength, usernameStart = 10;
 	ifstream readData;
 	readData.open("authData.txt");
+	int count = 0;
 
 	while(getline(readData, tempUser)){
-		tempUsernameLength = characterCountUntilSpace(tempUser.substr(usernameStart));
-		passwordStart = 24 + tempUsernameLength;  //24 is the length of the formatting string up to that point.
-		tempPasswordLength = characterCountUntilSpace(tempUser.substr(passwordStart));
+		if(tempUser.size() > 1){
+			count++;
+			tempUsernameLength = characterCountUntilSpace(tempUser.substr(usernameStart));
+			passwordStart = 24 + tempUsernameLength;  //24 is the length of the formatting string up to that point.
+			tempPasswordLength = characterCountUntilSpace(tempUser.substr(passwordStart));
 
-		tempUsername = tempUser.substr(usernameStart, tempUsernameLength);
-		tempPassword = tempUser.substr(passwordStart, tempPasswordLength);
+			tempUsername = tempUser.substr(usernameStart, tempUsernameLength);
+			tempPassword = tempUser.substr(passwordStart, tempPasswordLength);
 
-		User * newUser = new User(tempUsername, tempPassword);
-		this->users[newUser]++;
+			User * newUser = new User(tempUsername, tempPassword);
+			this->users.insert(make_pair(count, newUser));
+		}
 	}
 	readData.close();
 }
 
 void Authenticator::printUserObjects(){
+	cout << "  Memory    |  User" << endl;
 	for(this->it = this->users.begin(); this->it != this->users.end(); this->it++){
-		cout << "Memory: "<< this->it->first << ", user ";
-		cout << this->it->first->getUsername() << endl;
+		cout << "["<< this->it->second << "] | [";
+		cout << this->it->second->getUsername() << "]"<< endl;
 	}
 }
 
 bool Authenticator::isUser(string username){
 	for(this->it = this->users.begin(); this->it != this->users.end(); this->it++)
-		if(this->it->first->getUsername() == username)
+		if(this->it->second->getUsername() == username)
 			return true;
 	return false;
 }
@@ -80,7 +89,7 @@ void Authenticator::logIn(string username, string password, bool & finished){
 	this->it = this->users.begin();
 
 	while(getline(readData, tempUser)){
-		this->currentUser = this->it->first;
+		this->currentUser = this->it->second;
 		if(tempUser == auth){
 			login = true;
 			break;
@@ -123,8 +132,6 @@ void Authenticator::signUp(string username, string password){
 
 
 	if(!exists){
-		User * newUser = new User(username, password);
-		this->users[newUser]++;
 		string auth = "Username: " + username + "    Password: " + password;
 		//			  Length 10	^			      Length 14 ^
 		ofstream writeData;
@@ -175,6 +182,7 @@ void Authenticator::authenticate(){
 
 		switch(choice){
 			case 1:
+				this->fillMapOfUsers();
 				cout << "Username : "; cin >> username;
 				cout << "Password : "; cin >> password;
 
@@ -196,6 +204,7 @@ void Authenticator::authenticate(){
 					remove("authData.txt");
 				else
 					break;
+				this->users.clear();
 				cin.clear();
 				break;
 			case 5:

@@ -7,8 +7,10 @@
 #include "expenses.h"
 
 int main() {
-	Authenticator * authenticator = new Authenticator;
-	authenticator->fillMapOfUsers();
+	Authenticator * authenticator = new Authenticator();
+
+	authenticator->fillMapOfUsers(); // Just for observing users and their memory
+
 	authenticator->printUserObjects();
 	authenticator->authenticate();
 
