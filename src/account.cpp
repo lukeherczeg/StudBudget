@@ -141,17 +141,17 @@ vector<string> split(const string &s, char delim) {
 
 
 void Account::changeExpenseField(string username, string month, string expenseType, double newAmount){
-	vector<string> lineContents;
-	string tempLine;
-	string desiredAmount = to_string(newAmount);
+	vector<string> lineContents;	
+	string tempLine;		//line used for getline
+	string desiredAmount = to_string(newAmount);	//converts the amount from the input to a string to be inserted
 	bool found = false;
 	int monthPos = 0;
 
 	for(unsigned int i = 0; i < months.size(); i++){
-		if(months[i] == month){
+		if(months[i] == month){	//if input month matches the month in the vector of months
 			break;
 		}
-		monthPos++;
+		monthPos++;	//break and go to the next month
 	}
 	/////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
 
@@ -179,27 +179,26 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 
 	bool foundLine = false;
 	ifstream readData;
-	vector<string> data;
 	string expense = expenseType + ':';
 	cout << expense;
 	ofstream tempWrite;
 	readData.open("accountData.txt");
 	tempWrite.open("accountDataTemp.txt", ios::app);
 
-	while(getline(readData,tempLine)){
-			lineContents = split(tempLine, ' ');
+	while(getline(readData,tempLine)){		//while there is another line in the text file being red from
+			lineContents = split(tempLine, ' ');	//split the line into strings, delimited by spaces
 
-			for(unsigned int i = 0; i < lineContents.size(); i++){
-				if(lineContents[i] == username){
+			for(unsigned int i = 0; i < lineContents.size(); i++){	//loops through the line
+				if(lineContents[i] == username){	//for finding the correct username
 					found = true;
 				}
-				if(lineContents[i] == month && found){
+				if(lineContents[i] == month && found){	//for finding the correct line
 					foundLine = true;
 				}
-				if(lineContents[i] == expense && foundLine && found){
+				if(lineContents[i] == expense && foundLine && found){	//replaces the contents of that line with the correct data
 					lineContents[i+1];
 					tempLine.replace(tempLine.find(lineContents[i]) + lineContents[i].length() + 1, lineContents[i+1].length(), desiredAmount);
-					foundLine = false;
+					foundLine = false;	//sets bools back to false for next iteration so correct item is replaced
 					found = false;
 					break;
 				}
@@ -207,12 +206,48 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 		lineContents.clear();
 		tempWrite << tempLine << endl;
 	}
-	tempWrite.close();
+	tempWrite.close();	//cleanup stuff
 	readData.close();
 	remove("accountData.txt");
 	rename("accountDataTemp.txt","accountData.txt");
 
 }
+
+/*double Account::getExpense(string username, string month, string expenseType) {	//TODO: want to return value of a certain expense given the expense name, username and month, feel free to comment out method if it throws error
+	vector<string> lineContents;		//vector for each line
+	string tempLine;					//line used in getline
+	bool found = false;					//if username is found
+	bool foundLine = false;				//if username and correct month is found
+	string expense = expenseType + ':';	//just the name of the expense
+	ifstream readData;					//for reading data
+	double expenseValue = 0.0;			//value to be returned
+
+	ofstream tempWrite;					//for writing to files
+	readData.open("accountData.txt");
+	tempWrite.open("accountDataTemp.txt", ios::app);
+
+	while (getline(readData, tempLine)) {		//while there is a line in the file
+		lineContents = split(tempLine, ' ');	//splits the contents of a line by the spaces between them
+
+		for (unsigned int i = 0; i < lineContents.size(); i++) {	//loops through the line
+			if (lineContents[i] == username) {	//checks if correct username is found
+				found = true;
+			}
+			if (lineContents[i] == month && found) {	//checks if correct month is found
+				foundLine = true;
+			}
+			if (lineContents[i] == expense && foundLine && found) {
+				expenseValue;	//TODO: set expenseValue equal to the value you need to return but how???
+			}
+		}
+		//lineContents.clear();
+		//tempWrite << tempLine << endl;
+	}
+}
+	/*tempWrite.close();
+	readData.close();
+	remove("accountData.txt");
+	rename("accountDataTemp.txt", "accountData.txt");*/
 
 double Account::deposit(double depositAmount){
 	return 0.0; //placeholder - have to include this in calculations and call specific accounts
