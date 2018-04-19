@@ -20,8 +20,8 @@ int main() {
 
 		user->getAccount()->writeData(username);
 		user->getAccount()->printData();
-		user->getAccount()->changeExpenseField(username, "May", "RENT", 56.9);
-		user->getAccount()->changeExpenseField(username, "April", "SAVINGS", 34.69);
+		user->getAccount()->changeExpenseField(username, "May", "TUITION", 56.9);
+		user->getAccount()->changeExpenseField(username, "November", "SAVINGS", 34.69);
 		user->getAccount()->printData();
 	}
 	return 0;

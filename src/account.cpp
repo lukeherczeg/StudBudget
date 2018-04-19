@@ -177,24 +177,7 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 
 	/////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
 
-	/*ofstream write;
-	write.open("accountData.txt", ios::out); // Appends new data to the file
-	write << "\n" << username << "\n\n";
-	for(unsigned int i = 0; i < months.size(); i++){  // Months is the same size as the expenses
-		write << months[i];
-		for(unsigned int j = 0; j < (9 - months[i].size()); j++){ // 9 is the longest month, September
-			write << " ";									  // Correctly formats the data.
-		}
-		write 	  <<  " "  << "FOOD: " 			<<	this->monthExpenses[i]->getFoodCost()
-				  << " | " << "RENT: " 			<< 	this->monthExpenses[i]->getRentCost()
-				  << " | " << "ENTERTAINMENT: " << 	this->monthExpenses[i]->getEntertainmentCost()  //For loop causes a new object to be created for
-				  << " | " << "TUITION: " 		<< 	this->monthExpenses[i]->getTuitionCost()		//each month, then each expense is printed for that month
-				  << " | " << "SAVINGS: "	    << 	this->monthExpenses[i]->getSavingsCost()
-				  << " | " << "MISC: "			<< 	this->monthExpenses[i]->getMiscCost() << endl;
-	}
-	write.close();*/
-
-	bool foundLine = false; // TODO: fix this so it overwrites properly and stores new values for the right user
+	bool foundLine = false;
 	ifstream readData;
 	vector<string> data;
 	string expense = expenseType + ':';
@@ -210,19 +193,17 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 				if(lineContents[i] == username){
 					found = true;
 				}
-				if(lineContents[i] == month){
+				if(lineContents[i] == month && found){
 					foundLine = true;
 				}
 				if(lineContents[i] == expense && foundLine && found){
-					cout << lineContents[i+1];
-					tempLine.replace(tempLine.find(lineContents[i+1]), lineContents[i+1].length(), desiredAmount);
+					lineContents[i+1];
+					tempLine.replace(tempLine.find(lineContents[i]) + lineContents[i].length() + 1, lineContents[i+1].length(), desiredAmount);
 					foundLine = false;
 					found = false;
 					break;
 				}
-				//cout << lineContents[i];
 		}
-		cout << endl;
 		lineContents.clear();
 		tempWrite << tempLine << endl;
 	}
