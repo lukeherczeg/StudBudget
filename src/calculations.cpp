@@ -20,14 +20,16 @@ double Calculations::monthlyProfit(){
 	return income - totalExpense;
 }
 
+/* unnecessary functions
 double Calculations::transferAmount(){
   return 0.0;
 }
 
 double Calculations::calculateProfit() {
   return 0.0;
-}
+}*/
 
 void Calculations::transfer(User x) {
+	//transfers money between user accounts
   return;
 }
