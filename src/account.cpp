@@ -194,43 +194,42 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 	}
 	write.close();*/
 
-	bool foundNum, foundLine; // TODO: fix this so it overwrites properly and stores new values for the right user
+	bool foundLine = false; // TODO: fix this so it overwrites properly and stores new values for the right user
 	ifstream readData;
 	vector<string> data;
+	string expense = expenseType + ':';
+	cout << expense;
 	ofstream tempWrite;
 	readData.open("accountData.txt");
 	tempWrite.open("accountDataTemp.txt", ios::app);
 
-	while(getline(readData, tempLine)){
-		if(tempLine.find(username)){
-			found = true;
-		}
-		if(found){
-			found = false;
+	while(getline(readData,tempLine)){
 			lineContents = split(tempLine, ' ');
 
-			for(string content : lineContents){
-				if(content == month){
+			for(unsigned int i = 0; i < lineContents.size(); i++){
+				if(lineContents[i] == username){
+					found = true;
+				}
+				if(lineContents[i] == month){
 					foundLine = true;
 				}
-				else if(content == expenseType + ':'){
-					foundNum = true;
-				}
-				cout << content;
-				if(foundNum && foundLine){
-					tempLine.replace(tempLine.find(content), content.length(), desiredAmount);
-					foundNum = false;
+				if(lineContents[i] == expense && foundLine && found){
+					cout << lineContents[i+1];
+					tempLine.replace(tempLine.find(lineContents[i+1]), lineContents[i+1].length(), desiredAmount);
 					foundLine = false;
+					found = false;
 					break;
 				}
-			}
+				//cout << lineContents[i];
 		}
+		cout << endl;
+		lineContents.clear();
 		tempWrite << tempLine << endl;
 	}
 	tempWrite.close();
 	readData.close();
-	//remove("accountData.txt");
-	//rename("accountDataTemp.txt","accountData.txt");
+	remove("accountData.txt");
+	rename("accountDataTemp.txt","accountData.txt");
 
 }
 
