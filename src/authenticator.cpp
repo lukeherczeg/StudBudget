@@ -25,8 +25,9 @@ int characterCountUntilSpace(string word) // This is done, functions well.
 {
     int count = 0;
     for(unsigned int i = 0; i < word.size(); i++) {
-        if (isspace(word[i]))
+        if (isspace(word[i])){
             break;
+        }
     	count++;
     }
     return count;
@@ -37,11 +38,10 @@ User * Authenticator::getUser(){
 }
 
 void Authenticator::fillMapOfUsers(){
-	string tempUser, tempUsername, tempPassword;
-	int passwordStart, tempPasswordLength, tempUsernameLength, usernameStart = 10;
 	ifstream readData;
+	string tempUser, tempUsername, tempPassword;
+	int passwordStart, tempPasswordLength, tempUsernameLength, usernameStart = 10, count = 0;
 	readData.open("authData.txt");
-	int count = 0;
 
 	while(getline(readData, tempUser)){
 		if(tempUser.size() > 1){
@@ -70,22 +70,20 @@ void Authenticator::printUserObjects(){
 }
 
 bool Authenticator::isUser(string username){
-	for(this->it = this->users.begin(); this->it != this->users.end(); this->it++)
-		if(this->it->second->getUsername() == username)
+	for(this->it = this->users.begin(); this->it != this->users.end(); this->it++){
+		if(this->it->second->getUsername() == username){
 			return true;
+		}
+	}
 	return false;
 }
 
 void Authenticator::logIn(string username, string password, bool & finished){
-	string tempUser;
 	bool login = false;
+	string tempUser = "";
 	ifstream readData;
-
 	string auth = "Username: " + username + "    Password: " + password;
-
-	tempUser = "";
 	readData.open("authData.txt");
-
 
 	this->it = this->users.begin();
 
@@ -95,23 +93,26 @@ void Authenticator::logIn(string username, string password, bool & finished){
 			login = true;
 			break;
 		}
-		if(this->it != this->users.end())
+		if(this->it != this->users.end()){
 			this->it++;
+		}
 	}
 
-	if(login)
+	if(login){
 		finished = true;
-	else
+	}
+	else{
 		cout << "Didn't find your username or password. Please sign up." << endl;
+	}
 
 	readData.close();
 }
 
 void Authenticator::signUp(string username, string password){
 	ifstream readData;
-	bool exists = false;
 	string tempUser, tempUsername, tempPassword;
 	int passwordStart, tempPasswordLength, tempUsernameLength, usernameStart = 10;
+	bool exists = false;
 
 	readData.open("authData.txt");
 
@@ -155,8 +156,9 @@ void Authenticator::printUsers(){
 		count++;
 		cout << count << ".) " << tempUser << endl;
 	}
-	if(count == 0)
+	if(count == 0){
 		cout << "No users found." << endl;
+	}
 	readData.close();
 }
 
@@ -165,8 +167,8 @@ void Authenticator::authenticate(){
 	int choice = 0, count = 0;
 	bool finished = false;
 
-	cout << "\nWelcome to the Budgeting App. Sign up below! \nIf you have an account already, please enter your username and password.\n" << endl;
-	cout << "\t1. Log in\n\t2. Sign up\n\t3. Print users\n\t4. Clear all users\n\t5. Exit" << endl;
+	cout << "\nWelcome to the Budgeting App. Sign up below! \nIf you have an account already, please enter your username and password.\n" << endl
+		 << "\t1. Log in\n\t2. Sign up\n\t3. Print users\n\t4. Clear all users\n\t5. Exit" << endl;
 
 	while(!finished) {
 		while (true){
@@ -183,16 +185,14 @@ void Authenticator::authenticate(){
 
 		switch(choice){
 			case 1:
-				this->fillMapOfUsers();
+				this->fillMapOfUsers(); // Properly assigns pointers to every user.
 				cout << "Username : "; cin >> username;
 				cout << "Password : "; cin >> password;
-
 				this->logIn(username, password, finished);
 				break;
 			case 2:
 				cout << "Username : "; cin >> username;
 				cout << "Password : "; cin >> password;
-
 				this->signUp(username, password);
 				break;
 			case 3:
@@ -201,15 +201,15 @@ void Authenticator::authenticate(){
 			case 4:
 				cout << "Are you sure you want to clear all users? y/n : ";
 				cin >> choice2;
-				if(choice2 == "y")
+				if(choice2 == "y"){
 					remove("authData.txt");
-				else
-					break;
+				}
+				else break;
 				this->users.clear();
 				cin.clear();
 				break;
 			case 5:
-				this->currentUser = NULL;
+				this->currentUser = NULL; //Set to null to exit
 				finished = true;
 				break;
 			default:

@@ -18,29 +18,30 @@
 class Account {
 
 private:
+	vector<Expenses*> monthExpenses;
+	vector<Expenses*>::iterator it;
     double startBalance;
     double incomingSalary;
-    vector<Expenses*> monthExpenses;
-    vector<Expenses*>::iterator it;
     double savingAccountNumber;
     double checkingAccountNumber;
 
 public:
     Account();
     void printData();
+    void changeExpenseField(string username, string month, string expenseType, double newAmount);
     bool dataExists(string username);
     void writeData(string username);
-    void setStartBalance(double x);
+    void setStartBalance(double balance);
     double getStartBalance();
-    void setIncomingSalary(double x);
+    void setIncomingSalary(double salary);
     double getIncomingSalary();
-    void setSavingAccountNumber(double x);
+    void setSavingAccountNumber(double number);
     double getSavingAccountNumber();
-    void setCheckingAccountNumber(double x);
+    void setCheckingAccountNumber(double number);
     double getCheckingAccountNumber();
     double getAccountNumber();
-    double deposit(double x);
-    double withdraw(double x);
+    double deposit(double depositAmount);
+    double withdraw(double amount);
     //void enterExpenses(Expenses x);
     void transfer(User x);
 };

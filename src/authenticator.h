@@ -11,7 +11,7 @@
 
 class Authenticator{
 private:
-	map<int, User*>::iterator it;
+	map<int, User*>::iterator it; // Iterator to iterate through the hash map
 	map<int, User*> users;
 	User * currentUser;
 public:

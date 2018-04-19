@@ -17,7 +17,7 @@ private:
 
 public:
     User(string username, string password);
-    User();
+    User(); // Default constructor for no username or password
     void setName(string x);
     Account * getAccount();
     string getUsername();
