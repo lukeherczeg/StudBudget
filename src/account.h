@@ -42,7 +42,7 @@ public:
     double getAccountNumber();
     double deposit(double depositAmount);
     double withdraw(double amount);
-	//double getExpense(string username, string month, string expenseType);
+	double getExpense(string username, string month, string expenseType);
     //void enterExpenses(Expenses x);
     void transfer(User x);
 };

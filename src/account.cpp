@@ -180,7 +180,6 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 	bool foundLine = false;
 	ifstream readData;
 	string expense = expenseType + ':';
-	cout << expense;
 	ofstream tempWrite;
 	readData.open("accountData.txt");
 	tempWrite.open("accountDataTemp.txt", ios::app);
@@ -213,7 +212,7 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 
 }
 
-/*double Account::getExpense(string username, string month, string expenseType) {	//TODO: want to return value of a certain expense given the expense name, username and month, feel free to comment out method if it throws error
+double Account::getExpense(string username, string month, string expenseType) {	//TODO: want to return value of a certain expense given the expense name, username and month, feel free to comment out method if it throws error
 	vector<string> lineContents;		//vector for each line
 	string tempLine;					//line used in getline
 	bool found = false;					//if username is found
@@ -237,17 +236,21 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 				foundLine = true;
 			}
 			if (lineContents[i] == expense && foundLine && found) {
-				expenseValue;	//TODO: set expenseValue equal to the value you need to return but how???
+				expenseValue = double(tempLine.find(lineContents[i]) + lineContents[i].length() + 1);	//TODO: change this string to a double to be returned
+				//cout << endl;
+				//cout << expenseValue << endl;	//for testing only
+				//return expenseValue;
 			}
 		}
-		//lineContents.clear();
-		//tempWrite << tempLine << endl;
+		lineContents.clear();
+		tempWrite << tempLine << endl;
 	}
-}
-	/*tempWrite.close();
+	tempWrite.close();
 	readData.close();
 	remove("accountData.txt");
-	rename("accountDataTemp.txt", "accountData.txt");*/
+	rename("accountDataTemp.txt", "accountData.txt");
+	return expenseValue;
+}
 
 double Account::deposit(double depositAmount){
 	return 0.0; //placeholder - have to include this in calculations and call specific accounts

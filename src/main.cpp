@@ -22,6 +22,7 @@ int main() {
 		user->getAccount()->printData();
 		user->getAccount()->changeExpenseField(username, "May", "TUITION", 56.9);
 		user->getAccount()->changeExpenseField(username, "November", "SAVINGS", 34.69);
+		user->getAccount()->getExpense(username, "November", "SAVINGS");
 		user->getAccount()->printData();
 	}
 	return 0;
