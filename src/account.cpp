@@ -253,3 +253,37 @@ double Account::withdraw(double expenseAmount, double withdrawlAmount){
 	double updatedExpenses = expenseAmount - withdrawlAmount;
   return updatedExpenses;
 }
+
+void Account::transfer(User * user, double transferAmount, string month, string expenseType, string thisUsername){
+    double amount = this->withdraw(this->getExpense(thisUsername, month, expenseType), transferAmount);
+    this->changeExpenseField(thisUsername, month, expenseType, amount); //need to change the actual amount in the expenses
+
+    for(unsigned int i = 0; i < months.size(); i++){
+  		if(months[i] == month){	//if input month matches the month in the vector of months
+  			break;
+  		}
+  		monthPos++;	//break and go to the next month
+  	}
+  	/////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
+
+  	if(expenseType == "FOOD"){
+  		this->monthExpenses[monthPos]->setFoodCost(newAmount);
+  	}
+  	else if(expenseType == "RENT"){
+  		this->monthExpenses[monthPos]->setRentCost(newAmount);
+  	}
+  	else if(expenseType == "ENTERTAINMENT"){
+  		this->monthExpenses[monthPos]->setEntertainmentCost(newAmount);
+  	}
+  	else if(expenseType == "TUITION"){
+  		this->monthExpenses[monthPos]->setTuitionCost(newAmount);
+  	}
+  	else if(expenseType == "SAVINGS"){
+  		this->monthExpenses[monthPos]->setSavingsCost(newAmount);
+  	}
+  	else if(expenseType == "MISC"){
+  		this->monthExpenses[monthPos]->setMiscCost(newAmount);
+  	}
+    //outgoing done. TODO incoming needs to be done
+
+}
