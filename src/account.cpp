@@ -117,11 +117,6 @@ double Account::getCheckingAccountNumber(){
   return this->checkingAccountNumber;
 }
 
-
-// TODO , write a function to both use the data to do ::: line.replace(line.find(deleteline),deleteline.length(),"");
-// and change the field by accessing the month's index.
-
-
 /////////////////// For delimiting a string by spaces on one line ////////////////////////////
 template<typename Out>
 void split(const string &s, char delim, Out result) {
@@ -222,10 +217,7 @@ double Account::getExpense(string username, string month, string expenseType) {
 	string expenseValueS;				//value to be returned
 	double expenseValue;
 	
-
-	ofstream tempWrite;					//for writing to files
 	readData.open("accountData.txt");
-	tempWrite.open("accountDataTemp.txt", ios::app);
 
 	while (getline(readData, tempLine)) {		//while there is a line in the file
 		lineContents = split(tempLine, ' ');	//splits the contents of a line by the spaces between them
@@ -243,18 +235,13 @@ double Account::getExpense(string username, string month, string expenseType) {
 				if (!(convert >> expenseValue)) {
 					expenseValue = 0;	//if it's not converted, this returns a zero
 				}
-				//cout << endl;
-				//cout << expenseValueS << endl;	//for testing only so you can see that the correct value is returned
 				return expenseValue;
 			}
 		}
 		lineContents.clear();			//cleanup stuff
-		tempWrite << tempLine << endl;
 	}
-	tempWrite.close();
 	readData.close();
-	remove("accountData.txt");
-	rename("accountDataTemp.txt", "accountData.txt");
+	return expenseValue;
 }
 
 double Account::deposit(double depositAmount){

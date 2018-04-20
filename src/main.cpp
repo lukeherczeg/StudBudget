@@ -19,11 +19,15 @@ int main() {
 		std::cout << "\nYou're logged in as " << username << "!" << std::endl;
 
 		user->getAccount()->writeData(username);
-		user->getAccount()->printData();
 		user->getAccount()->changeExpenseField(username, "May", "TUITION", 56.9);		//change these parameters to test
 		user->getAccount()->changeExpenseField(username, "November", "SAVINGS", 34.69);	//and these
-		user->getAccount()->getExpense(username, "May", "TUITION");						//also these
 		user->getAccount()->printData();
+
+
+		string month, type;
+		month = "November";
+		type = "SAVINGS";
+		cout << "\nYour " << month << " " << type << " are [" <<  user->getAccount()->getExpense(username, month, type) << "]\n";
 	}
 
 	return 0;
