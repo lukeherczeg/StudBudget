@@ -136,7 +136,7 @@ vector<string> split(const string &s, char delim) {
 
 
 void Account::changeExpenseField(string username, string month, string expenseType, double newAmount){
-	vector<string> lineContents;	
+	vector<string> lineContents;
 	string tempLine;		//line used for getline
 	string desiredAmount = to_string(newAmount);	//converts the amount from the input to a string to be inserted
 	bool found = false;
@@ -207,7 +207,7 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 
 }
 
-double Account::getExpense(string username, string month, string expenseType) {	
+double Account::getExpense(string username, string month, string expenseType) {
 	vector<string> lineContents;		//vector for each line
 	string tempLine;					//line used in getline
 	bool found = false;					//if username is found
@@ -216,7 +216,7 @@ double Account::getExpense(string username, string month, string expenseType) {
 	ifstream readData;					//for reading data
 	string expenseValueS;				//value to be returned
 	double expenseValue;
-	
+
 	readData.open("accountData.txt");
 
 	while (getline(readData, tempLine)) {		//while there is a line in the file
@@ -244,45 +244,12 @@ double Account::getExpense(string username, string month, string expenseType) {
 	return expenseValue;
 }
 
-double Account::deposit(double depositAmount){
-	return 0.0; //placeholder - have to include this in calculations and call specific accounts
+double Account::deposit(double expenseAmount, double depositAmount){
+	double newExpenseAmount = expenseAmount + depositAmount;
+  return newExpenseAmount;
 }
 
-double Account::withdraw(double withdrawlAmount){
-	return 0.0; //placeholder - have to include this in calculations and call specific accounts
+double Account::withdraw(double expenseAmount, double withdrawlAmount){
+	double updatedExpenses = expenseAmount - withdrawlAmount;
+  return updatedExpenses;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

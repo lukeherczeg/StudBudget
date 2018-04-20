@@ -40,8 +40,8 @@ public:
     void setCheckingAccountNumber(double number);
     double getCheckingAccountNumber();
     double getAccountNumber();
-    double deposit(double depositAmount);
-    double withdraw(double amount);
+    double deposit(double expenseAmount, double depositAmount);
+    double withdraw(double expenseAmount, double withdrawlAmount);
 	double getExpense(string username, string month, string expenseType);
     //void enterExpenses(Expenses x);
     void transfer(User x);
