@@ -21,7 +21,7 @@
 
 
 const vector<string> months = {"January", "February", "March", "April", "May", "June", "July",
-   						 "August", "September", "October", "November", "December"};
+   						 "August", "September", "October", "November", "December"};	//vector for months, used for .find
 
 Account::Account(){
 	int size = 12;
@@ -212,14 +212,16 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 
 }
 
-double Account::getExpense(string username, string month, string expenseType) {	//TODO: want to return value of a certain expense given the expense name, username and month, feel free to comment out method if it throws error
+double Account::getExpense(string username, string month, string expenseType) {	
 	vector<string> lineContents;		//vector for each line
 	string tempLine;					//line used in getline
 	bool found = false;					//if username is found
 	bool foundLine = false;				//if username and correct month is found
 	string expense = expenseType + ':';	//just the name of the expense
 	ifstream readData;					//for reading data
-	double expenseValue = 0.0;			//value to be returned
+	string expenseValueS;				//value to be returned
+	double expenseValue;
+	
 
 	ofstream tempWrite;					//for writing to files
 	readData.open("accountData.txt");
@@ -236,20 +238,23 @@ double Account::getExpense(string username, string month, string expenseType) {	
 				foundLine = true;
 			}
 			if (lineContents[i] == expense && foundLine && found) {
-				expenseValue = double(tempLine.find(lineContents[i]) + lineContents[i].length() + 1);	//TODO: change this string to a double to be returned
+				expenseValueS = lineContents[i + 1];	//gets the value for that expense
+				stringstream convert(expenseValueS);	//converts that value (a string) to a double
+				if (!(convert >> expenseValue)) {
+					expenseValue = 0;	//if it's not converted, this returns a zero
+				}
 				//cout << endl;
-				//cout << expenseValue << endl;	//for testing only
-				//return expenseValue;
+				//cout << expenseValueS << endl;	//for testing only so you can see that the correct value is returned
+				return expenseValue;
 			}
 		}
-		lineContents.clear();
+		lineContents.clear();			//cleanup stuff
 		tempWrite << tempLine << endl;
 	}
 	tempWrite.close();
 	readData.close();
 	remove("accountData.txt");
 	rename("accountDataTemp.txt", "accountData.txt");
-	return expenseValue;
 }
 
 double Account::deposit(double depositAmount){

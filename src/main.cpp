@@ -20,10 +20,11 @@ int main() {
 
 		user->getAccount()->writeData(username);
 		user->getAccount()->printData();
-		user->getAccount()->changeExpenseField(username, "May", "TUITION", 56.9);
-		user->getAccount()->changeExpenseField(username, "November", "SAVINGS", 34.69);
-		user->getAccount()->getExpense(username, "November", "SAVINGS");
+		user->getAccount()->changeExpenseField(username, "May", "TUITION", 56.9);		//change these parameters to test
+		user->getAccount()->changeExpenseField(username, "November", "SAVINGS", 34.69);	//and these
+		user->getAccount()->getExpense(username, "May", "TUITION");						//also these
 		user->getAccount()->printData();
 	}
+
 	return 0;
 }
