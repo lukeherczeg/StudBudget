@@ -255,7 +255,8 @@ double Account::withdraw(double expenseAmount, double withdrawlAmount){
 }
 
 void Account::transfer(User * user, double transferAmount, string month, string expenseType, string thisUsername){
-    double amount = this->withdraw(this->getExpense(thisUsername, month, expenseType), transferAmount);
+    int monthPos;
+	double amount = this->withdraw(this->getExpense(thisUsername, month, expenseType), transferAmount);
     this->changeExpenseField(thisUsername, month, expenseType, amount); //need to change the actual amount in the expenses
 
     for(unsigned int i = 0; i < months.size(); i++){
@@ -267,22 +268,22 @@ void Account::transfer(User * user, double transferAmount, string month, string 
   	/////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
 
   	if(expenseType == "FOOD"){
-  		this->monthExpenses[monthPos]->setFoodCost(newAmount);
+  		this->monthExpenses[monthPos]->setFoodCost(amount);
   	}
   	else if(expenseType == "RENT"){
-  		this->monthExpenses[monthPos]->setRentCost(newAmount);
+  		this->monthExpenses[monthPos]->setRentCost(amount);
   	}
   	else if(expenseType == "ENTERTAINMENT"){
-  		this->monthExpenses[monthPos]->setEntertainmentCost(newAmount);
+  		this->monthExpenses[monthPos]->setEntertainmentCost(amount);
   	}
   	else if(expenseType == "TUITION"){
-  		this->monthExpenses[monthPos]->setTuitionCost(newAmount);
+  		this->monthExpenses[monthPos]->setTuitionCost(amount);
   	}
   	else if(expenseType == "SAVINGS"){
-  		this->monthExpenses[monthPos]->setSavingsCost(newAmount);
+  		this->monthExpenses[monthPos]->setSavingsCost(amount);
   	}
   	else if(expenseType == "MISC"){
-  		this->monthExpenses[monthPos]->setMiscCost(newAmount);
+  		this->monthExpenses[monthPos]->setMiscCost(amount);
   	}
     //outgoing done. TODO incoming needs to be done
 

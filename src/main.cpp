@@ -20,7 +20,7 @@ int main() {
 
 		user->getAccount()->writeData(username);
 		user->getAccount()->changeExpenseField(username, "May", "TUITION", 56.9398475);		//change these parameters to test
-		user->getAccount()->changeExpenseField(username, "November", "SAVINGS", 34.69);	//and these
+		user->getAccount()->changeExpenseField(username, "November", "SAVINGS", 34.69);		//and these
 		//user->getAccount()->printData();
 
 
