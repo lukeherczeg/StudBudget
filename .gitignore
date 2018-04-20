@@ -33,3 +33,4 @@
 -*.pdb
 -*.tlog
 -*.vcxproj
+/Debug/

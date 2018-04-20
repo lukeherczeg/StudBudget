@@ -19,9 +19,9 @@ int main() {
 		std::cout << "\nYou're logged in as " << username << "!" << std::endl;
 
 		user->getAccount()->writeData(username);
-		user->getAccount()->changeExpenseField(username, "May", "TUITION", 56.9);		//change these parameters to test
+		user->getAccount()->changeExpenseField(username, "May", "TUITION", 56.9398475);		//change these parameters to test
 		user->getAccount()->changeExpenseField(username, "November", "SAVINGS", 34.69);	//and these
-		user->getAccount()->printData();
+		//user->getAccount()->printData();
 
 
 		string month, type;
