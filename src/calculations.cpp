@@ -31,5 +31,6 @@ double Calculations::calculateProfit() {
 
 void Calculations::transfer(User x) {
 	//transfers money between user accounts
+	
   return;
 }
