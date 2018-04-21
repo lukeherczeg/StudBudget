@@ -233,50 +233,50 @@ void Expenses::setExtraDeficit() {
 }
 
 std::string Expenses::financialAdvice() {
-  std::string concatAdvice = "";
-  if(totalFoodDeficit > 0){
-    concatAdvice += "It is recommended to spend no more than 15% on Food\n";
-  }
-  if(totalRentDeficit > 0){
-    concatAdvice += "Remember, put 30% of your income towards Rent this month\n";
-  }
-  if(totalEntertainmentDeficit > 0){
-    concatAdvice += "Prioritize your spending! Your Entertainment costs have exceeded 10%\n";
-  }
-  if(totalTuitionExtra > 0) {
-    concatAdvice += "Delegate 20% of your income to Tuition this month to avoid student loan debt!\n";
-  }
-  if(totalTuitionDeficit > 0) {
-    concatAdvice += "Only 20% of your income should be spent on Tuition\n";
-  }
-  if(totalSavingsDeficit > 0) {
-    concatAdvice += "Your Savings are low, make sure to save at least 5% of your income this month!\n";
-  }
-  if(totalMiscDeficit > 0) {
-    concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income. Shop smart!\n";
-  }
-  if(totalAnnualExtra > 0){
-    concatAdvice += "You have some extra total money! Add it to Savings!\n";
-  }
-  if((totalFoodBudget/totalAnnualBudget) > .17
-  || (totalRentBudget/totalAnnualBudget) > .33
-  || (totalEntertainmentBudget/totalAnnualBudget) > .12
-  || (totalTuitionBudget/totalAnnualBudget) > .22
-  || (totalMiscBudget/totalAnnualBudget) > .22){
-    concatAdvice += "Too much of your budget is in  \n";
-  }
+	std::string concatAdvice = "";
+	if(totalFoodDeficit > 0){
+	concatAdvice += "It is recommended to spend no more than 15% on Food\n";
+	}
+	if(totalRentDeficit > 0){
+	concatAdvice += "Remember, put 30% of your income towards Rent this month\n";
+	}
+	if(totalEntertainmentDeficit > 0){
+	concatAdvice += "Prioritize your spending! Your Entertainment costs have exceeded 10%\n";
+	}
+	if(totalTuitionExtra > 0) {
+	concatAdvice += "Delegate 20% of your income to Tuition this month to avoid student loan debt!\n";
+	}
+	if(totalTuitionDeficit > 0) {
+	concatAdvice += "Only 20% of your income should be spent on Tuition\n";
+	}
+	if(totalSavingsDeficit > 0) {
+	concatAdvice += "Your Savings are low, make sure to save at least 5% of your income this month!\n";
+	}
+	if(totalMiscDeficit > 0) {
+	concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income. Shop smart!\n";
+	}
+	if(totalAnnualExtra > 0){
+	concatAdvice += "You have some extra total money! Add it to Savings!\n";
+	}
+	if((totalFoodBudget/totalAnnualBudget) > .17
+	|| (totalRentBudget/totalAnnualBudget) > .33
+	|| (totalEntertainmentBudget/totalAnnualBudget) > .12
+	|| (totalTuitionBudget/totalAnnualBudget) > .22
+	|| (totalMiscBudget/totalAnnualBudget) > .22){
+	concatAdvice += "Too much of your budget is in  \n";
+	}
 
-  concatAdvice += "Treat yourself, but don't overspend\n";
-  return concatAdvice;
+	concatAdvice += "Treat yourself, but don't overspend\n";
+	return concatAdvice;
 }
 
 std::string Expenses::financialAdvice(int month) {
 	std::string concatAdvice = "";
 	if () {
 
-  }
-  else {
+	}
+	else {
 
-  }
+	}
 	return concatAdvice;
-}
+	}
