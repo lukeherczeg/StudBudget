@@ -33,8 +33,8 @@ public:
     void changeExpenseField(double newAmount);
     bool dataExists();
     void writeData();
-    void deposit(double expenseAmount, double depositAmount);
-    void withdraw(double expenseAmount, double withdrawAmount);
+    void deposit(double depositAmount);
+    void withdraw(double withdrawAmount);
     double getExpense();
     //void transfer(User * x, double transferAmount, string month, string expenseType, string thisUsername);
 };

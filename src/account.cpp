@@ -225,13 +225,13 @@ double Account::getExpense() {
 	return expenseValue;
 }
 
-void Account::deposit(double expenseAmount, double depositAmount){
-	double updatedExpenses = expenseAmount + depositAmount;
+void Account::deposit(double depositAmount){
+	double updatedExpenses = this->getExpense() + depositAmount;
 	changeExpenseField(updatedExpenses);
 }
 
-void Account::withdraw(double expenseAmount, double withdrawAmount){
-	double updatedExpenses = expenseAmount - withdrawAmount;
+void Account::withdraw(double withdrawAmount){
+	double updatedExpenses = this->getExpense() - withdrawAmount;
 	changeExpenseField(updatedExpenses);
 }
 

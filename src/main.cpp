@@ -30,13 +30,13 @@ int main() {
 		type = "MISCBUDGET";
 		user->getAccount()->setExpenseType(type);
 		user->getAccount()->setMonth(month);
-		user->getAccount()->deposit(user->getAccount()->getExpense(), 100);		//change these parameters to test
+		user->getAccount()->deposit(100);		//change these parameters to test
 
 		month = 9;
 		type = "TUITION";
 		user->getAccount()->setExpenseType(type);
 		user->getAccount()->setMonth(month);
-		user->getAccount()->deposit(user->getAccount()->getExpense(), 39);	//and these
+		user->getAccount()->deposit(39);	//and these
 
 		cout << "\nYour " << months[month] << " " << type << " is [" <<  user->getAccount()->getExpense() << "]\n";
 	}
