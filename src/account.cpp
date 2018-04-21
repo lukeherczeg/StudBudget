@@ -24,7 +24,6 @@ const vector<string> months = {"January", "February", "March", "April", "May", "
    						 "August", "September", "October", "November", "December"};	//vector for months, used for .find
 
 Account::Account(){
-	//int size = 12;
 	this->expenses = new Expenses();
 	this->checkingAccountNumber = 0;
 	this->incomingSalary = 0;
@@ -241,7 +240,7 @@ double Account::getExpense(string username, int month, string expenseType) {
 				return expenseValue;
 			}
 		}
-		lineContents.clear();			//cleanup stuff
+		lineContents.clear();	//cleanup stuff
 	}
 	readData.close();
 	return expenseValue;

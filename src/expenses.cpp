@@ -1,22 +1,5 @@
 #include "expenses.h"
 
-Expenses::Expenses(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget) {
-    for(int i = 0; i < 12; i++) {
-        foodCost[i] = f[i];
-        foodBudget[i] = fBudget[i];
-        rentCost[i] = r[i];
-        rentBudget[i] = rBudget[i];
-        entertainmentCost[i] = e[i];
-        entertainmentBudget[i] = eBudget[i];
-        tuitionCost[i] = t[i];
-        tuitionBudget[i] = tBudget[i];
-        savingsCost[i] = s[i];
-        savingsBudget[i] = sBudget[i];
-        miscCost[i] = m[i];
-        miscBudget[i] = mBudget[i];
-    }
-}
-
 Expenses::Expenses() {
     for(int i = 0; i < 12; i++) {
         foodCost[i] = 0;
@@ -31,6 +14,23 @@ Expenses::Expenses() {
         savingsBudget[i] = 0;
         miscCost[i] = 0;
         miscBudget[i] = 0;
+    }
+}
+
+void Expenses::fillArrays(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget) {
+    for(int i = 0; i < 12; i++) {
+        foodCost[i] = f[i];
+        foodBudget[i] = fBudget[i];
+        rentCost[i] = r[i];
+        rentBudget[i] = rBudget[i];
+        entertainmentCost[i] = e[i];
+        entertainmentBudget[i] = eBudget[i];
+        tuitionCost[i] = t[i];
+        tuitionBudget[i] = tBudget[i];
+        savingsCost[i] = s[i];
+        savingsBudget[i] = sBudget[i];
+        miscCost[i] = m[i];
+        miscBudget[i] = mBudget[i];
     }
 }
 

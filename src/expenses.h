@@ -55,7 +55,7 @@ private:
 
 public:
     Expenses();
-    Expenses(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget);
+    void fillArrays(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget);
     void setFoodCost(double food, int month);
     double getFoodCost(int month);
     void setFoodBudget(double food, int month);
