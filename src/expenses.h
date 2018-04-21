@@ -81,7 +81,8 @@ public:
     void setMiscBudget(double misc, int month);
     double getMiscBudget(int month);
     void setExtraDeficit();
-    void financialAdvice();
+    string financialAdvice();
+    string financialAdvice(int month);
 };
 
 #endif
