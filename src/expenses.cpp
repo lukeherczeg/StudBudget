@@ -1,6 +1,18 @@
 #include "expenses.h"
 #include <string>
 
+Expenses::Expenses(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::Expenses)
+{
+    ui->setupUi(this);
+}
+
+Expenses::~Expenses()
+{
+    delete ui;
+}
+
 Expenses::Expenses(int num) {
     for(int i = 0; i < 12; i++) {
         foodCost[i] = 0;
@@ -212,71 +224,66 @@ void Expenses::setExtraDeficit() {
     }
 
     totalFoodCost += foodCost[i];
+    totalFoodBudget += foodBudget[i];
     totalFoodExtra += foodExtra[i];
     totalFoodDeficit += foodDeficit[i];
     totalRentCost += rentCost[i];
+    totalRentBudget += rentBudget[i];
     totalRentExtra += rentExtra[i];
     totalRentDeficit += rentDeficit[i];
     totalEntertainmentCost += entertainmentCost[i];
+    totalEntertainmentBudget += entertainmentBudget[i];
     totalEntertainmentExtra += entertainmentExtra[i];
     totalEntertainmentDeficit += entertainmentDeficit[i];
     totalTuitionCost += tuitionCost[i];
+    totalTuitionBudget += tuitionBudget[i];
     totalTuitionExtra += tuitionExtra[i];
     totalTuitionDeficit += tuitionDeficit[i];
     totalSavingsCost += savingsCost[i];
+    totalSavingsBudget += savingsBudget[i];
     totalSavingsExtra += savingsExtra[i];
     totalSavingsDeficit += savingsDeficit[i];
     totalMiscCost += miscCost[i];
+    totalMiscBudget += miscBudget[i];
     totalMiscExtra += miscExtra[i];
     totalMiscDeficit += miscDeficit[i];
   }
 }
 
 std::string Expenses::financialAdvice() {
-	std::string concatAdvice = "";
-	if(totalFoodDeficit > 0){
-	concatAdvice += "It is recommended to spend no more than 15% on Food\n";
-	}
-	if(totalRentDeficit > 0){
-	concatAdvice += "Remember, put 30% of your income towards Rent this month\n";
-	}
-	if(totalEntertainmentDeficit > 0){
-	concatAdvice += "Prioritize your spending! Your Entertainment costs have exceeded 10%\n";
-	}
-	if(totalTuitionExtra > 0) {
-	concatAdvice += "Delegate 20% of your income to Tuition this month to avoid student loan debt!\n";
-	}
-	if(totalTuitionDeficit > 0) {
-	concatAdvice += "Only 20% of your income should be spent on Tuition\n";
-	}
-	if(totalSavingsDeficit > 0) {
-	concatAdvice += "Your Savings are low, make sure to save at least 5% of your income this month!\n";
-	}
-	if(totalMiscDeficit > 0) {
-	concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income. Shop smart!\n";
-	}
-	if(totalAnnualExtra > 0){
-	concatAdvice += "You have some extra total money! Add it to Savings!\n";
-	}
-	if((totalFoodBudget/totalAnnualBudget) > .17
-	|| (totalRentBudget/totalAnnualBudget) > .33
-	|| (totalEntertainmentBudget/totalAnnualBudget) > .12
-	|| (totalTuitionBudget/totalAnnualBudget) > .22
-	|| (totalMiscBudget/totalAnnualBudget) > .22){
-	concatAdvice += "Too much of your budget is in  \n";
-	}
+    std::string concatAdvice = "";
+        if(totalFoodDeficit > 0){
+        concatAdvice += "It is recommended to spend no more than 15% on Food\n";
+        }
+        if(totalRentDeficit > 0){
+        concatAdvice += "Remember, put 30% of your income towards Rent this month\n";
+        }
+        if(totalEntertainmentDeficit > 0){
+        concatAdvice += "Prioritize your spending! Your Entertainment costs have exceeded 10%\n";
+        }
+        if(totalTuitionExtra > 0) {
+        concatAdvice += "Delegate 20% of your income to Tuition this month to avoid student loan debt!\n";
+        }
+        if(totalTuitionDeficit > 0) {
+        concatAdvice += "Only 20% of your income should be spent on Tuition\n";
+        }
+        if(totalSavingsDeficit > 0) {
+        concatAdvice += "Your Savings are low, make sure to save at least 5% of your income this month!\n";
+        }
+        if(totalMiscDeficit > 0) {
+        concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income. Shop smart!\n";
+        }
+        if(totalAnnualExtra > 0){
+        concatAdvice += "You have some extra total money! Add it to Savings!\n";
+        }
+        if((totalFoodBudget/totalAnnualBudget) > .17
+        || (totalRentBudget/totalAnnualBudget) > .33
+        || (totalEntertainmentBudget/totalAnnualBudget) > .12
+        || (totalTuitionBudget/totalAnnualBudget) > .22
+        || (totalMiscBudget/totalAnnualBudget) > .22){
+        concatAdvice += "Too much of your budget is in  \n";
+        }
 
-	concatAdvice += "Treat yourself, but don't overspend\n";
-	return concatAdvice;
+        concatAdvice += "Treat yourself, but don't overspend\n";
+        return concatAdvice;
 }
-
-std::string Expenses::financialAdvice(int month) {
-	std::string concatAdvice = "";
-	if () {
-
-	}
-	else {
-
-	}
-	return concatAdvice;
-	}
