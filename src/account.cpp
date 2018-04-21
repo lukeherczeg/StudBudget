@@ -55,12 +55,17 @@ void Account::writeData(string username){
 				writeData << " ";									  // Correctly formats the data.
 			}
 
-			writeData <<  " "  << "FOOD: " 			<<	this->expenses->getFoodCost(i)
-					  << " | " << "RENT: " 			<< 	this->expenses->getRentCost(i)
-					  << " | " << "ENTERTAINMENT: " << 	this->expenses->getEntertainmentCost(i)  //For loop causes a new object to be created for
-					  << " | " << "TUITION: " 		<< 	this->expenses->getTuitionCost(i)		//each month, then each expense is printed for that month
-					  << " | " << "SAVINGS: "	    << 	this->expenses->getSavingsCost(i)
-					  << " | " << "MISC: "			<< 	this->expenses->getMiscCost(i) << endl;
+			writeData <<  " "  << "FOOD: " 					<<	this->expenses->getFoodCost(i)
+					  << " | " << "RENT: " 					<< 	this->expenses->getRentCost(i)
+					  << " | " << "ENTERTAINMENT: " 		<< 	this->expenses->getEntertainmentCost(i)  //For loop causes a new object to be created for
+					  << " | " << "TUITION: " 				<< 	this->expenses->getTuitionCost(i)		//each month, then each expense is printed for that month
+					  << " | " << "SAVINGS: "	    		<< 	this->expenses->getSavingsCost(i)
+					  << " | " << "MISC: "					<< 	this->expenses->getMiscCost(i)
+					  << " | " << "RENTBUDGET: " 			<< 	this->expenses->getRentBudget(i)
+					  << " | " << "ENTERTAINMENTBUDGET: " 	<< 	this->expenses->getEntertainmentBudget(i)
+					  << " | " << "TUITIONBUDGET: " 		<< 	this->expenses->getTuitionBudget(i)
+					  << " | " << "SAVINGSBUDGET: "	  		<< 	this->expenses->getSavingsBudget(i)
+					  << " | " << "MISCBUDGET: "			<< 	this->expenses->getMiscBudget(i) << endl;
 		}
 		writeData.close();
 	}
@@ -126,34 +131,49 @@ vector<string> split(const string &s, char delim) {
 /////////////////// For delimiting a string by spaces on one line ////////////////////////////
 
 
+void Account::setCost(double amount, int month, string expenseType){
+	if(expenseType == "FOOD"){
+		this->expenses->setFoodCost(amount, month);
+	}
+	else if(expenseType == "RENT"){
+		this->expenses->setRentCost(amount, month);
+	}
+	else if(expenseType == "ENTERTAINMENT"){
+		this->expenses->setEntertainmentCost(amount, month);
+	}
+	else if(expenseType == "TUITION"){
+		this->expenses->setTuitionCost(amount, month);
+	}
+	else if(expenseType == "SAVINGS"){
+		this->expenses->setSavingsCost(amount, month);
+	}
+	else if(expenseType == "MISC"){
+		this->expenses->setMiscCost(amount, month);
+	}
+	else if(expenseType == "RENTBUDGET"){
+		this->expenses->setRentBudget(amount, month);
+	}
+	else if(expenseType == "ENTERTAINMENTBUDGET"){
+		this->expenses->setEntertainmentBudget(amount, month);
+	}
+	else if(expenseType == "TUITIONBUDGET"){
+		this->expenses->setTuitionBudget(amount, month);
+	}
+	else if(expenseType == "SAVINGBUDGET"){
+		this->expenses->setSavingsBudget(amount, month);
+	}
+	else if(expenseType == "MISCBUDGET"){
+		this->expenses->setMiscBudget(amount, month);
+	}
+}
+
 void Account::changeExpenseField(string username, int monthPos, string expenseType, double newAmount){
 	vector<string> lineContents;
 	string tempLine;		//line used for getline
 	string desiredAmount = to_string(newAmount);	//converts the amount from the input to a string to be inserted
 	bool found = false;
-	/////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
 
-	if(expenseType == "FOOD"){
-		this->expenses->setFoodCost(newAmount, monthPos);
-	}
-	else if(expenseType == "RENT"){
-		this->expenses->setRentCost(newAmount, monthPos);
-	}
-	else if(expenseType == "ENTERTAINMENT"){
-		this->expenses->setEntertainmentCost(newAmount, monthPos);
-	}
-	else if(expenseType == "TUITION"){
-		this->expenses->setTuitionCost(newAmount, monthPos);
-	}
-	else if(expenseType == "SAVINGS"){
-		this->expenses->setSavingsCost(newAmount, monthPos);
-	}
-	else if(expenseType == "MISC"){
-		this->expenses->setMiscCost(newAmount, monthPos);
-	}
-
-
-	/////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
+	this->setCost(newAmount, monthPos, expenseType); // Sets the correct type of cost based on the input
 
 	bool foundLine = false;
 	ifstream readData;
@@ -243,24 +263,7 @@ double Account::withdraw(double expenseAmount, double withdrawlAmount){
 
   	/////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
 
-  	if(expenseType == "FOOD"){
-  		this->expenses->setFoodCost(amount, monthPos);
-  	}
-  	else if(expenseType == "RENT"){
-  		this->expenses->setRentCost(amount, monthPos);
-  	}
-  	else if(expenseType == "ENTERTAINMENT"){
-  		this->expenses->setEntertainmentCost(amount, monthPos);
-  	}
-  	else if(expenseType == "TUITION"){
-  		this->expenses->setTuitionCost(amount, monthPos);
-  	}
-  	else if(expenseType == "SAVINGS"){
-  		this->expenses->setSavingsCost(amount, monthPos);
-  	}
-  	else if(expenseType == "MISC"){
-  		this->expenses->setMiscCost(amount, monthPos);
-  	}
+  	setCost(amount, monthPos, expenseType);
     //outgoing done. TODO incoming needs to be done
 
 }*/

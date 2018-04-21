@@ -27,6 +27,7 @@ private:
 public:
     Account();
     void printData();
+    void setCost(double amount, int month, string expenseType);
     void changeExpenseField(string username, int month, string expenseType, double newAmount);
     bool dataExists(string username);
     void writeData(string username);

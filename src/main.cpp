@@ -22,14 +22,14 @@ int main() {
 
 		user->getAccount()->writeData(username);
 		user->getAccount()->changeExpenseField(username, 4, "TUITION", 56.9398475);		//change these parameters to test
-		user->getAccount()->changeExpenseField(username, 10, "SAVINGS", 34.69);		//and these
+		user->getAccount()->changeExpenseField(username, 10, "SAVINGSBUDGET", 34.69);		//and these
 		//user->getAccount()->printData();
 
 
 		int month;
 		string type;
 		month = 10;
-		type = "SAVINGS";
+		type = "SAVINGSBUDGET";
 		cout << "\nYour " << month << " " << type << " are [" <<  user->getAccount()->getExpense(username, month, type) << "]\n";
 	}
 
