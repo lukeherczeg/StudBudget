@@ -1,6 +1,7 @@
 #include "expenses.h"
+#include <string>
 
-Expenses::Expenses() {
+Expenses::Expenses(int num) {
     for(int i = 0; i < 12; i++) {
         foodCost[i] = 0;
         foodBudget[i] = 0;
@@ -231,8 +232,8 @@ void Expenses::setExtraDeficit() {
   }
 }
 
-string Expenses::financialAdvice() {
-  string concatAdvice = "";
+std::string Expenses::financialAdvice() {
+  std::string concatAdvice = "";
   if(totalFoodDeficit > 0){
     concatAdvice += "It is recommended to spend no more than 15% on Food\n";
   }
@@ -245,13 +246,13 @@ string Expenses::financialAdvice() {
   if(totalTuitionExtra > 0) {
     concatAdvice += "Delegate 20% of your income to Tuition this month to avoid student loan debt!\n";
   }
-  if (totalTuitionDeficit > 0) {
+  if(totalTuitionDeficit > 0) {
     concatAdvice += "Only 20% of your income should be spent on Tuition\n";
   }
   if(totalSavingsDeficit > 0) {
     concatAdvice += "Your Savings are low, make sure to save at least 5% of your income this month!\n";
   }
-  if (totalMiscDeficit > 0) {
+  if(totalMiscDeficit > 0) {
     concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income. Shop smart!\n";
   }
   if(totalAnnualExtra > 0){
@@ -260,7 +261,7 @@ string Expenses::financialAdvice() {
   if((totalFoodBudget/totalAnnualBudget) > .17
   || (totalRentBudget/totalAnnualBudget) > .33
   || (totalEntertainmentBudget/totalAnnualBudget) > .12
-  || (totalTuitionBudget/totalAnnualBudget) > .22)
+  || (totalTuitionBudget/totalAnnualBudget) > .22
   || (totalMiscBudget/totalAnnualBudget) > .22){
     concatAdvice += "Too much of your budget is in  \n";
   }
@@ -269,12 +270,13 @@ string Expenses::financialAdvice() {
   return concatAdvice;
 }
 
-string Expenses::financialAdvice(int month) {
-
-  if ( ) {
+std::string Expenses::financialAdvice(int month) {
+	std::string concatAdvice = "";
+	if () {
 
   }
   else {
 
   }
+	return concatAdvice;
 }

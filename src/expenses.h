@@ -1,6 +1,6 @@
 #ifndef EXPENSES_H_
 #define EXPENSES_H_
-
+#include <string>
 
 class Expenses {
 
@@ -54,7 +54,7 @@ private:
     double totalMiscDeficit;
 
 public:
-    Expenses();
+    Expenses(int num);
     void fillArrays(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget);
     void setFoodCost(double food, int month);
     double getFoodCost(int month);
@@ -81,8 +81,8 @@ public:
     void setMiscBudget(double misc, int month);
     double getMiscBudget(int month);
     void setExtraDeficit();
-    string financialAdvice();
-    string financialAdvice(int month);
+    std::string financialAdvice();
+    std::string financialAdvice(int month);
 };
 
 #endif

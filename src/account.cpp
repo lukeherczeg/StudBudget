@@ -24,7 +24,7 @@ const vector<string> months = {"January", "February", "March", "April", "May", "
    						 "August", "September", "October", "November", "December"};	//vector for months, used for .find
 
 Account::Account(){
-	this->expenses = new Expenses();
+	this->expenses = new Expenses(0);
 	this->username = "";
 	this->month = 0;
 	this->expenseType = "";
