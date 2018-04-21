@@ -25,10 +25,7 @@ const vector<string> months = {"January", "February", "March", "April", "May", "
 
 Account::Account(){
 	int size = 12;
-	this->monthExpenses.reserve(size); // Reserve 12 because there will be 12 months
-	for(int i = 0; i < size; i++){
-		this->monthExpenses.push_back(NULL);
-	}
+	this->expenses = new Expenses();
 	this->checkingAccountNumber = 0;
 	this->incomingSalary = 0;
 	this->savingAccountNumber = 0;
@@ -58,19 +55,18 @@ void Account::writeData(string username){
 				writeData << " ";									  // Correctly formats the data.
 			}
 
-			this->monthExpenses[i] = new Expenses();	//a new object for expenses is set equal to pointer to each month's expenses
-			writeData <<  " "  << "FOOD: " 			<<	this->monthExpenses[i]->getFoodCost()
-					  << " | " << "RENT: " 			<< 	this->monthExpenses[i]->getRentCost()
-					  << " | " << "ENTERTAINMENT: " << 	this->monthExpenses[i]->getEntertainmentCost()  //For loop causes a new object to be created for
-					  << " | " << "TUITION: " 		<< 	this->monthExpenses[i]->getTuitionCost()		//each month, then each expense is printed for that month
-					  << " | " << "SAVINGS: "	    << 	this->monthExpenses[i]->getSavingsCost()
-					  << " | " << "MISC: "			<< 	this->monthExpenses[i]->getMiscCost() << endl;
+			writeData <<  " "  << "FOOD: " 			<<	this->expenses->getFoodCost(i)
+					  << " | " << "RENT: " 			<< 	this->expenses->getRentCost(i)
+					  << " | " << "ENTERTAINMENT: " << 	this->expenses->getEntertainmentCost(i)  //For loop causes a new object to be created for
+					  << " | " << "TUITION: " 		<< 	this->expenses->getTuitionCost(i)		//each month, then each expense is printed for that month
+					  << " | " << "SAVINGS: "	    << 	this->expenses->getSavingsCost(i)
+					  << " | " << "MISC: "			<< 	this->expenses->getMiscCost(i) << endl;
 		}
 		writeData.close();
 	}
 	else{
 		for(unsigned int i = 0; i < months.size(); i++){
-			this->monthExpenses[i] = new Expenses();
+			this->expenses = new Expenses();
 		}
 	}
 }
@@ -135,38 +131,30 @@ vector<string> split(const string &s, char delim) {
 /////////////////// For delimiting a string by spaces on one line ////////////////////////////
 
 
-void Account::changeExpenseField(string username, string month, string expenseType, double newAmount){
+void Account::changeExpenseField(string username, int monthPos, string expenseType, double newAmount){
 	vector<string> lineContents;
 	string tempLine;		//line used for getline
 	string desiredAmount = to_string(newAmount);	//converts the amount from the input to a string to be inserted
 	bool found = false;
-	int monthPos = 0;
-
-	for(unsigned int i = 0; i < months.size(); i++){
-		if(months[i] == month){	//if input month matches the month in the vector of months
-			break;
-		}
-		monthPos++;	//break and go to the next month
-	}
 	/////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
 
 	if(expenseType == "FOOD"){
-		this->monthExpenses[monthPos]->setFoodCost(newAmount);
+		this->expenses->setFoodCost(newAmount, monthPos);
 	}
 	else if(expenseType == "RENT"){
-		this->monthExpenses[monthPos]->setRentCost(newAmount);
+		this->expenses->setRentCost(newAmount, monthPos);
 	}
 	else if(expenseType == "ENTERTAINMENT"){
-		this->monthExpenses[monthPos]->setEntertainmentCost(newAmount);
+		this->expenses->setEntertainmentCost(newAmount, monthPos);
 	}
 	else if(expenseType == "TUITION"){
-		this->monthExpenses[monthPos]->setTuitionCost(newAmount);
+		this->expenses->setTuitionCost(newAmount, monthPos);
 	}
 	else if(expenseType == "SAVINGS"){
-		this->monthExpenses[monthPos]->setSavingsCost(newAmount);
+		this->expenses->setSavingsCost(newAmount, monthPos);
 	}
 	else if(expenseType == "MISC"){
-		this->monthExpenses[monthPos]->setMiscCost(newAmount);
+		this->expenses->setMiscCost(newAmount, monthPos);
 	}
 
 
@@ -186,7 +174,7 @@ void Account::changeExpenseField(string username, string month, string expenseTy
 				if(lineContents[i] == username){	//for finding the correct username
 					found = true;
 				}
-				if(lineContents[i] == month && found){	//for finding the correct line
+				if(lineContents[i] == months[monthPos] && found){	//for finding the correct line
 					foundLine = true;
 				}
 				if(lineContents[i] == expense && foundLine && found){	//replaces the contents of that line with the correct data
@@ -254,37 +242,30 @@ double Account::withdraw(double expenseAmount, double withdrawlAmount){
   return updatedExpenses;
 }
 
-void Account::transfer(User * user, double transferAmount, string month, string expenseType, string thisUsername){
-    int monthPos;
+*/void Account::transfer(User * user, double transferAmount, int monthPos, string expenseType, string thisUsername){
 	double amount = this->withdraw(this->getExpense(thisUsername, month, expenseType), transferAmount);
     this->changeExpenseField(thisUsername, month, expenseType, amount); //need to change the actual amount in the expenses
 
-    for(unsigned int i = 0; i < months.size(); i++){
-  		if(months[i] == month){	//if input month matches the month in the vector of months
-  			break;
-  		}
-  		monthPos++;	//break and go to the next month
-  	}
   	/////////////////////////// Sets the correct type of cost based on the input ///////////////////////////////////
 
   	if(expenseType == "FOOD"){
-  		this->monthExpenses[monthPos]->setFoodCost(amount);
+  		this->expenses->setFoodCost(amount, monthPos);
   	}
   	else if(expenseType == "RENT"){
-  		this->monthExpenses[monthPos]->setRentCost(amount);
+  		this->expenses->setRentCost(amount, monthPos);
   	}
   	else if(expenseType == "ENTERTAINMENT"){
-  		this->monthExpenses[monthPos]->setEntertainmentCost(amount);
+  		this->expenses->setEntertainmentCost(amount, monthPos);
   	}
   	else if(expenseType == "TUITION"){
-  		this->monthExpenses[monthPos]->setTuitionCost(amount);
+  		this->expenses->setTuitionCost(amount, monthPos);
   	}
   	else if(expenseType == "SAVINGS"){
-  		this->monthExpenses[monthPos]->setSavingsCost(amount);
+  		this->expenses->setSavingsCost(amount, monthPos);
   	}
   	else if(expenseType == "MISC"){
-  		this->monthExpenses[monthPos]->setMiscCost(amount);
+  		this->expenses->setMiscCost(amount, monthPos);
   	}
     //outgoing done. TODO incoming needs to be done
 
-}
+}*/

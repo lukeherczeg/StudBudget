@@ -18,7 +18,8 @@
 class Account {
 
 private:
-	vector<Expenses*> monthExpenses;
+	//vector<Expenses*> monthExpenses;
+	Expenses * expenses;
 	vector<Expenses*>::iterator it;
     double startBalance;
     double incomingSalary;
