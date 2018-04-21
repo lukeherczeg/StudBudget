@@ -1,37 +1,11 @@
 #ifndef EXPENSES_H_
 #define EXPENSES_H_
 
-public:
-    Expenses(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget);
-    void setFoodCost(double food, int month);
-    double getFoodCost(int month);
-    void setFoodBudget(double food, int month);
-    double getFoodBudget(int month);
-    void setRent(double rent, int month);
-    double getRent(int month);
-    void setRentBudget(double rent, int month);
-    double getRentBudget(int month);
-    void setEntertainmentCost(double entertainment, int month);
-    double getEntertainmentCost(int month);
-    void setEntertainmentBudget(double entertainment, int month);
-    double getEntertainmentBudget(int month);
-    void setTuitionCost(double tuition, int month);
-    double getTutionCost(int month);
-    void setTuitionBudget(double tuition, int month);
-    double getTutionBudget(int month);
-    void setSavingsCost(double savings, int month);
-    double getSavingsCost(int month);
-    void setSavingsBudget(double savings, int month);
-    double getSavingsBudget(int month);
-    void setMiscCost(double misc, int month);
-    double getMiscCost(int month);
-    void setMiscBudget(double misc, int month);
-    double getMiscBudget(int month);
-    void setExtraDeficit();
-    void financialAdvice();
+
+class Expenses {
 
 private:
-    Ui::Expenses *ui;
+    //Ui::Expenses *ui;
     double foodCost[12];
     double foodBudget[12];
     double foodExtra[12];
@@ -78,6 +52,36 @@ private:
     double totalMiscCost;
     double totalMiscExtra;
     double totalMiscDeficit;
+
+public:
+    Expenses();
+    Expenses(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget);
+    void setFoodCost(double food, int month);
+    double getFoodCost(int month);
+    void setFoodBudget(double food, int month);
+    double getFoodBudget(int month);
+    void setRentCost(double rent, int month);
+    double getRentCost(int month);
+    void setRentBudget(double rent, int month);
+    double getRentBudget(int month);
+    void setEntertainmentCost(double entertainment, int month);
+    double getEntertainmentCost(int month);
+    void setEntertainmentBudget(double entertainment, int month);
+    double getEntertainmentBudget(int month);
+    void setTuitionCost(double tuition, int month);
+    double getTuitionCost(int month);
+    void setTuitionBudget(double tuition, int month);
+    double getTuitionBudget(int month);
+    void setSavingsCost(double savings, int month);
+    double getSavingsCost(int month);
+    void setSavingsBudget(double savings, int month);
+    double getSavingsBudget(int month);
+    void setMiscCost(double misc, int month);
+    double getMiscCost(int month);
+    void setMiscBudget(double misc, int month);
+    double getMiscBudget(int month);
+    void setExtraDeficit();
+    void financialAdvice();
 };
 
 #endif

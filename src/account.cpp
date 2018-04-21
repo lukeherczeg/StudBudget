@@ -24,7 +24,7 @@ const vector<string> months = {"January", "February", "March", "April", "May", "
    						 "August", "September", "October", "November", "December"};	//vector for months, used for .find
 
 Account::Account(){
-	int size = 12;
+	//int size = 12;
 	this->expenses = new Expenses();
 	this->checkingAccountNumber = 0;
 	this->incomingSalary = 0;
@@ -63,11 +63,6 @@ void Account::writeData(string username){
 					  << " | " << "MISC: "			<< 	this->expenses->getMiscCost(i) << endl;
 		}
 		writeData.close();
-	}
-	else{
-		for(unsigned int i = 0; i < months.size(); i++){
-			this->expenses = new Expenses();
-		}
 	}
 }
 
@@ -195,7 +190,7 @@ void Account::changeExpenseField(string username, int monthPos, string expenseTy
 
 }
 
-double Account::getExpense(string username, string month, string expenseType) {
+double Account::getExpense(string username, int month, string expenseType) {
 	vector<string> lineContents;		//vector for each line
 	string tempLine;					//line used in getline
 	bool found = false;					//if username is found
@@ -214,7 +209,7 @@ double Account::getExpense(string username, string month, string expenseType) {
 			if (lineContents[i] == username) {	//checks if correct username is found
 				found = true;
 			}
-			if (lineContents[i] == month && found) {	//checks if correct month is found
+			if (lineContents[i] == months[month] && found) {	//checks if correct month is found
 				foundLine = true;
 			}
 			if (lineContents[i] == expense && foundLine && found) {
@@ -242,7 +237,7 @@ double Account::withdraw(double expenseAmount, double withdrawlAmount){
   return updatedExpenses;
 }
 
-*/void Account::transfer(User * user, double transferAmount, int monthPos, string expenseType, string thisUsername){
+/*void Account::transfer(User * user, double transferAmount, int monthPos, string expenseType, string thisUsername){
 	double amount = this->withdraw(this->getExpense(thisUsername, month, expenseType), transferAmount);
     this->changeExpenseField(thisUsername, month, expenseType, amount); //need to change the actual amount in the expenses
 

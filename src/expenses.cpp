@@ -17,6 +17,23 @@ Expenses::Expenses(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget,
     }
 }
 
+Expenses::Expenses() {
+    for(int i = 0; i < 12; i++) {
+        foodCost[i] = 0;
+        foodBudget[i] = 0;
+        rentCost[i] = 0;
+        rentBudget[i] = 0;
+        entertainmentCost[i] = 0;
+        entertainmentBudget[i] = 0;
+        tuitionCost[i] = 0;
+        tuitionBudget[i] = 0;
+        savingsCost[i] = 0;
+        savingsBudget[i] = 0;
+        miscCost[i] = 0;
+        miscBudget[i] = 0;
+    }
+}
+
 void Expenses::setFoodCost(double food, int month) {
   foodCost[month] = food;
   totalCost[month] += food;
@@ -35,12 +52,12 @@ double Expenses::getFoodBudget(int month) {
   return foodBudget[month];
 }
 
-void Expenses::setRent(double rent, int month) {
+void Expenses::setRentCost(double rent, int month) {
   rentCost[month] = rent;
   totalCost[month] += rent;
 }
 
-double Expenses::getRent(int month) {
+double Expenses::getRentCost(int month) {
   return foodCost[month];
 }
 
@@ -76,7 +93,7 @@ void Expenses::setTuitionCost(double tuition, int month) {
   totalCost[month] += tuition;
 }
 
-double Expenses::getTutionCost(int month) {
+double Expenses::getTuitionCost(int month) {
   return tuitionCost[month];
 }
 
@@ -85,7 +102,7 @@ void Expenses::setTuitionBudget(double tuition, int month) {
   totalBudget[month] += tuition;
 }
 
-double Expenses::getTutionBudget(int month) {
+double Expenses::getTuitionBudget(int month) {
   return tuitionBudget[month];
 }
 
@@ -138,15 +155,15 @@ void Expenses::setExtraDeficit() {
       foodDeficit[i] = getFoodCost(i) - getFoodBudget(i);
     }
 
-    if(getRentBudget(i) - getRent(i) > 0) {
-      rentExtra[i] = getRentBudget(i) - getRent(i);
+    if(getRentBudget(i) - getRentCost(i) > 0) {
+      rentExtra[i] = getRentBudget(i) - getRentCost(i);
       rentDeficit[i] = 0;
-    } else if(getRentBudget(i) - getRent(i) == 0) {
+    } else if(getRentBudget(i) - getRentCost(i) == 0) {
       rentExtra[i] = 0;
       rentDeficit[i] = 0;
     } else {
       rentExtra[i] = 0;
-      rentDeficit[i] = getRent(i) - getRentBudget(i);
+      rentDeficit[i] = getRentCost(i) - getRentBudget(i);
     }
 
     if(getEntertainmentBudget(i) - getEntertainmentCost(i) > 0) {

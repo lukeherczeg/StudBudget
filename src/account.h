@@ -18,9 +18,7 @@
 class Account {
 
 private:
-	//vector<Expenses*> monthExpenses;
 	Expenses * expenses;
-	vector<Expenses*>::iterator it;
     double startBalance;
     double incomingSalary;
     double savingAccountNumber;
@@ -29,7 +27,7 @@ private:
 public:
     Account();
     void printData();
-    void changeExpenseField(string username, string month, string expenseType, double newAmount);
+    void changeExpenseField(string username, int month, string expenseType, double newAmount);
     bool dataExists(string username);
     void writeData(string username);
     void setStartBalance(double balance);
@@ -43,7 +41,7 @@ public:
     double getAccountNumber();
     double deposit(double expenseAmount, double depositAmount);
     double withdraw(double expenseAmount, double withdrawlAmount);
-	  double getExpense(string username, string month, string expenseType);
+	  double getExpense(string username, int month, string expenseType);
     //void enterExpenses(Expenses x);
     void transfer(User * x, double transferAmount, string month, string expenseType, string thisUsername);
 };
