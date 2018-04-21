@@ -25,29 +25,40 @@ const vector<string> months = {"January", "February", "March", "April", "May", "
 
 Account::Account(){
 	this->expenses = new Expenses();
-	this->checkingAccountNumber = 0;
-	this->incomingSalary = 0;
-	this->savingAccountNumber = 0;
-	this->startBalance = 0;
+	this->username = "";
+	this->month = 0;
+	this->expenseType = "";
 }
 
-bool Account::dataExists(string username){
+void Account::setUsername(string username){
+	this->username = username;
+}
+void Account::setMonth(int month){
+	this->month = month;
+}
+
+void Account::setExpenseType(string expenseType){
+	this->expenseType = expenseType;
+}
+
+
+bool Account::dataExists(){
 	ifstream readData;
 	string tempLine;
 	readData.open("accountData.txt");
 	while(readData >> tempLine){
-		if(tempLine == username){
+		if(tempLine == this->username){
 			return true;
 		}
 	}
 	return false;
 }
 
-void Account::writeData(string username){
-	if(!this->dataExists(username)){ // If the given user hasn't already had data logged
+void Account::writeData(){
+	if(!this->dataExists()){ // If the given user hasn't already had data logged
 		ofstream writeData;
 		writeData.open("accountData.txt", ios_base::app); // Appends new data to the file
-		writeData << "\n" << username << "\n\n";
+		writeData << "\n" << this->username << "\n\n";
 		for(unsigned int i = 0; i < months.size(); i++){  // Months is the same size as the expenses
 			writeData << months[i];
 			for(unsigned int j = 0; j < (9 - months[i].size()); j++){ // 9 is the longest month, September
@@ -80,38 +91,6 @@ void Account::printData(){
 	readData.close();
 }
 
-void Account::setStartBalance(double startBalance){
-	this->startBalance = startBalance;
-}
-
-double Account::getStartBalance(){
-	return this->startBalance;
-}
-
-void Account::setIncomingSalary(double incomingSalary){
-	this->incomingSalary = incomingSalary;
-}
-
-double Account::getIncomingSalary(){
-	return this->incomingSalary;
-}
-
-void Account::setSavingAccountNumber(double savingAccountNumber){
-	this->savingAccountNumber = savingAccountNumber;
-}
-
-double Account::getSavingAccountNumber(){
-	return this->savingAccountNumber;
-}
-
-void Account::setCheckingAccountNumber(double checkingAccountNumber){
-	this->checkingAccountNumber = checkingAccountNumber;
-}
-
-double Account::getCheckingAccountNumber(){
-  return this->checkingAccountNumber;
-}
-
 /////////////////// For delimiting a string by spaces on one line ////////////////////////////
 template<typename Out>
 void split(const string &s, char delim, Out result) {
@@ -130,53 +109,53 @@ vector<string> split(const string &s, char delim) {
 /////////////////// For delimiting a string by spaces on one line ////////////////////////////
 
 
-void Account::setCost(double amount, int month, string expenseType){
-	if(expenseType == "FOOD"){
-		this->expenses->setFoodCost(amount, month);
+void Account::setCost(double amount){
+	if(this->expenseType == "FOOD"){
+		this->expenses->setFoodCost(amount, this->month);
 	}
-	else if(expenseType == "RENT"){
-		this->expenses->setRentCost(amount, month);
+	else if(this->expenseType == "RENT"){
+		this->expenses->setRentCost(amount, this->month);
 	}
-	else if(expenseType == "ENTERTAINMENT"){
-		this->expenses->setEntertainmentCost(amount, month);
+	else if(this->expenseType == "ENTERTAINMENT"){
+		this->expenses->setEntertainmentCost(amount, this->month);
 	}
-	else if(expenseType == "TUITION"){
-		this->expenses->setTuitionCost(amount, month);
+	else if(this->expenseType == "TUITION"){
+		this->expenses->setTuitionCost(amount, this->month);
 	}
-	else if(expenseType == "SAVINGS"){
-		this->expenses->setSavingsCost(amount, month);
+	else if(this->expenseType == "SAVINGS"){
+		this->expenses->setSavingsCost(amount, this->month);
 	}
-	else if(expenseType == "MISC"){
-		this->expenses->setMiscCost(amount, month);
+	else if(this->expenseType == "MISC"){
+		this->expenses->setMiscCost(amount, this->month);
 	}
-	else if(expenseType == "RENTBUDGET"){
-		this->expenses->setRentBudget(amount, month);
+	else if(this->expenseType == "RENTBUDGET"){
+		this->expenses->setRentBudget(amount, this->month);
 	}
-	else if(expenseType == "ENTERTAINMENTBUDGET"){
-		this->expenses->setEntertainmentBudget(amount, month);
+	else if(this->expenseType == "ENTERTAINMENTBUDGET"){
+		this->expenses->setEntertainmentBudget(amount, this->month);
 	}
-	else if(expenseType == "TUITIONBUDGET"){
-		this->expenses->setTuitionBudget(amount, month);
+	else if(this->expenseType == "TUITIONBUDGET"){
+		this->expenses->setTuitionBudget(amount, this->month);
 	}
-	else if(expenseType == "SAVINGBUDGET"){
-		this->expenses->setSavingsBudget(amount, month);
+	else if(this->expenseType == "SAVINGBUDGET"){
+		this->expenses->setSavingsBudget(amount, this->month);
 	}
-	else if(expenseType == "MISCBUDGET"){
-		this->expenses->setMiscBudget(amount, month);
+	else if(this->expenseType == "MISCBUDGET"){
+		this->expenses->setMiscBudget(amount, this->month);
 	}
 }
 
-void Account::changeExpenseField(string username, int monthPos, string expenseType, double newAmount){
+void Account::changeExpenseField(double newAmount){
 	vector<string> lineContents;
 	string tempLine;		//line used for getline
 	string desiredAmount = to_string(newAmount);	//converts the amount from the input to a string to be inserted
 	bool found = false;
 
-	this->setCost(newAmount, monthPos, expenseType); // Sets the correct type of cost based on the input
+	this->setCost(newAmount); // Sets the correct type of cost based on the input
 
 	bool foundLine = false;
 	ifstream readData;
-	string expense = expenseType + ':';
+	string expense = this->expenseType + ':';
 	ofstream tempWrite;
 	readData.open("accountData.txt");
 	tempWrite.open("accountDataTemp.txt", ios::app);
@@ -185,10 +164,10 @@ void Account::changeExpenseField(string username, int monthPos, string expenseTy
 			lineContents = split(tempLine, ' ');	//split the line into strings, delimited by spaces
 
 			for(unsigned int i = 0; i < lineContents.size(); i++){	//loops through the line
-				if(lineContents[i] == username){	//for finding the correct username
+				if(lineContents[i] == this->username){	//for finding the correct username
 					found = true;
 				}
-				if(lineContents[i] == months[monthPos] && found){	//for finding the correct line
+				if(lineContents[i] == months[this->month] && found){	//for finding the correct line
 					foundLine = true;
 				}
 				if(lineContents[i] == expense && foundLine && found){	//replaces the contents of that line with the correct data
@@ -209,12 +188,12 @@ void Account::changeExpenseField(string username, int monthPos, string expenseTy
 
 }
 
-double Account::getExpense(string username, int month, string expenseType) {
+double Account::getExpense() {
 	vector<string> lineContents;		//vector for each line
 	string tempLine;					//line used in getline
 	bool found = false;					//if username is found
 	bool foundLine = false;				//if username and correct month is found
-	string expense = expenseType + ':';	//just the name of the expense
+	string expense = this->expenseType + ':';	//just the name of the expense
 	ifstream readData;					//for reading data
 	string expenseValueS;				//value to be returned
 	double expenseValue;
@@ -225,10 +204,10 @@ double Account::getExpense(string username, int month, string expenseType) {
 		lineContents = split(tempLine, ' ');	//splits the contents of a line by the spaces between them
 
 		for (unsigned int i = 0; i < lineContents.size(); i++) {	//loops through the line
-			if (lineContents[i] == username) {	//checks if correct username is found
+			if (lineContents[i] == this->username) {	//checks if correct username is found
 				found = true;
 			}
-			if (lineContents[i] == months[month] && found) {	//checks if correct month is found
+			if (lineContents[i] == months[this->month] && found) {	//checks if correct month is found
 				foundLine = true;
 			}
 			if (lineContents[i] == expense && foundLine && found) {
@@ -246,14 +225,14 @@ double Account::getExpense(string username, int month, string expenseType) {
 	return expenseValue;
 }
 
-double Account::deposit(double expenseAmount, double depositAmount){
-	double newExpenseAmount = expenseAmount + depositAmount;
-  return newExpenseAmount;
+void Account::deposit(double expenseAmount, double depositAmount){
+	double updatedExpenses = expenseAmount + depositAmount;
+	changeExpenseField(updatedExpenses);
 }
 
-double Account::withdraw(double expenseAmount, double withdrawlAmount){
-	double updatedExpenses = expenseAmount - withdrawlAmount;
-  return updatedExpenses;
+void Account::withdraw(double expenseAmount, double withdrawAmount){
+	double updatedExpenses = expenseAmount - withdrawAmount;
+	changeExpenseField(updatedExpenses);
 }
 
 /*void Account::transfer(User * user, double transferAmount, int monthPos, string expenseType, string thisUsername){

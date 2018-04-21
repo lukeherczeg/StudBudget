@@ -19,18 +19,26 @@ int main() {
 		User * user = authenticator->getUser();
 		std::string username = user->getUsername();
 		std::cout << "\nYou're logged in as " << username << "!" << std::endl;
-
-		user->getAccount()->writeData(username);
-		user->getAccount()->changeExpenseField(username, 4, "TUITION", 56.9398475);		//change these parameters to test
-		user->getAccount()->changeExpenseField(username, 10, "SAVINGSBUDGET", 34.69);		//and these
-		//user->getAccount()->printData();
-
-
+		user->getAccount()->setUsername(username);
 		int month;
 		string type;
+
+		user->getAccount()->writeData();
+
+
 		month = 10;
-		type = "SAVINGSBUDGET";
-		cout << "\nYour " << month << " " << type << " are [" <<  user->getAccount()->getExpense(username, month, type) << "]\n";
+		type = "MISCBUDGET";
+		user->getAccount()->setExpenseType(type);
+		user->getAccount()->setMonth(month);
+		user->getAccount()->deposit(user->getAccount()->getExpense(), 100);		//change these parameters to test
+
+		month = 9;
+		type = "TUITION";
+		user->getAccount()->setExpenseType(type);
+		user->getAccount()->setMonth(month);
+		user->getAccount()->deposit(user->getAccount()->getExpense(), 39);	//and these
+
+		cout << "\nYour " << months[month] << " " << type << " is [" <<  user->getAccount()->getExpense() << "]\n";
 	}
 
 	return 0;
