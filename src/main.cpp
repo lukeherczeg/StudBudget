@@ -17,9 +17,9 @@ int main() {
 
 	if(authenticator->getUser() != NULL){ // Used so the exit function doesn't cause an overflow.
 		User * user = authenticator->getUser(); // Gets the user
+		user->getAccount()->setUsername(user->getUsername()); // sets the username for the account of the user
 		std::string username = user->getUsername(); // Makes a username for later use with by getting the username
 		std::cout << "\nYou're logged in as " << username << "!" << std::endl; // Don't need
-		user->getAccount()->setUsername(username); // sets the username for the account of the user
 		int month;
 		string type; // these 2 are just going to be used when you go to the month or go to the expense type
 
