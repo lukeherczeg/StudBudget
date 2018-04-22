@@ -30,10 +30,10 @@ public:
     void setMiscBudget(double misc, int month);
     double getMiscBudget(int month);
     void setExtraDeficit();
-    void financialAdvice();
+    string financialAdvice(int month);
+	string financialAdvice();
 
 private:
-    //Ui::Expenses *ui;
     double foodCost[12];
     double foodBudget[12];
     double foodExtra[12];

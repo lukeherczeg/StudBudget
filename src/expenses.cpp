@@ -13,6 +13,8 @@ Expenses::~Expenses()
     delete ui;
 }*/
 
+using namespace std;
+
 Expenses::Expenses(int num) {
     for(int i = 0; i < 12; i++) {
         foodCost[i] = 0;
@@ -185,116 +187,231 @@ void Expenses::setExtraDeficit() {
     } else if(getEntertainmentBudget(i) - getEntertainmentCost(i) == 0) {
       entertainmentExtra[i] = 0;
       entertainmentDeficit[i] = 0;
-    } else {
-      entertainmentExtra[i] = 0;
-      entertainmentDeficit[i] = getEntertainmentCost(i) - getEntertainmentBudget(i);
-    }
+	}
+ else {
+	 entertainmentExtra[i] = 0;
+	 entertainmentDeficit[i] = getEntertainmentCost(i) - getEntertainmentBudget(i);
+ }
 
-    if(getTuitionBudget(i) - getTuitionCost(i) > 0) {
-      tuitionExtra[i] = getTuitionBudget(i) - getTuitionCost(i);
-      tuitionDeficit[i] = 0;
-    } else if(getTuitionBudget(i) - getTuitionCost(i) == 0) {
-      tuitionExtra[i] = 0;
-      tuitionDeficit[i] = 0;
-    } else {
-      tuitionExtra[i] = 0;
-      tuitionDeficit[i] = getTuitionCost(i) - getTuitionBudget(i);
-    }
+ if (getTuitionBudget(i) - getTuitionCost(i) > 0) {
+	 tuitionExtra[i] = getTuitionBudget(i) - getTuitionCost(i);
+	 tuitionDeficit[i] = 0;
+ }
+ else if (getTuitionBudget(i) - getTuitionCost(i) == 0) {
+	 tuitionExtra[i] = 0;
+	 tuitionDeficit[i] = 0;
+ }
+ else {
+	 tuitionExtra[i] = 0;
+	 tuitionDeficit[i] = getTuitionCost(i) - getTuitionBudget(i);
+ }
 
-    if(getSavingsBudget(i) - getSavingsCost(i) > 0) {
-      savingsExtra[i] = getSavingsBudget(i) - getSavingsCost(i);
-      savingsDeficit[i] = 0;
-    } else if(getSavingsBudget(i) - getSavingsCost(i) == 0) {
-      savingsExtra[i] = 0;
-      savingsDeficit[i] = 0;
-    } else {
-      savingsExtra[i] = 0;
-      savingsDeficit[i] = getSavingsCost(i) - getSavingsBudget(i);
-    }
+ if (getSavingsBudget(i) - getSavingsCost(i) > 0) {
+	 savingsExtra[i] = getSavingsBudget(i) - getSavingsCost(i);
+	 savingsDeficit[i] = 0;
+ }
+ else if (getSavingsBudget(i) - getSavingsCost(i) == 0) {
+	 savingsExtra[i] = 0;
+	 savingsDeficit[i] = 0;
+ }
+ else {
+	 savingsExtra[i] = 0;
+	 savingsDeficit[i] = getSavingsCost(i) - getSavingsBudget(i);
+ }
 
-    if(getMiscBudget(i) - getMiscCost(i) > 0) {
-      miscExtra[i] = getMiscBudget(i) - getMiscCost(i);
-      miscDeficit[i] = 0;
-    } else if(getMiscBudget(i) - getMiscCost(i) == 0) {
-      miscExtra[i] = 0;
-      miscDeficit[i] = 0;
-    } else {
-      miscExtra[i] = 0;
-      miscDeficit[i] = getMiscCost(i) - getMiscBudget(i);
-    }
+ if (getMiscBudget(i) - getMiscCost(i) > 0) {
+	 miscExtra[i] = getMiscBudget(i) - getMiscCost(i);
+	 miscDeficit[i] = 0;
+ }
+ else if (getMiscBudget(i) - getMiscCost(i) == 0) {
+	 miscExtra[i] = 0;
+	 miscDeficit[i] = 0;
+ }
+ else {
+	 miscExtra[i] = 0;
+	 miscDeficit[i] = getMiscCost(i) - getMiscBudget(i);
+ }
 
-    totalFoodCost += foodCost[i];
-    totalFoodBudget += foodBudget[i];
-    totalFoodExtra += foodExtra[i];
-    totalFoodDeficit += foodDeficit[i];
-    totalRentCost += rentCost[i];
-    totalRentBudget += rentBudget[i];
-    totalRentExtra += rentExtra[i];
-    totalRentDeficit += rentDeficit[i];
-    totalEntertainmentCost += entertainmentCost[i];
-    totalEntertainmentBudget += entertainmentBudget[i];
-    totalEntertainmentExtra += entertainmentExtra[i];
-    totalEntertainmentDeficit += entertainmentDeficit[i];
-    totalTuitionCost += tuitionCost[i];
-    totalTuitionBudget += tuitionBudget[i];
-    totalTuitionExtra += tuitionExtra[i];
-    totalTuitionDeficit += tuitionDeficit[i];
-    totalSavingsCost += savingsCost[i];
-    totalSavingsBudget += savingsBudget[i];
-    totalSavingsExtra += savingsExtra[i];
-    totalSavingsDeficit += savingsDeficit[i];
-    totalMiscCost += miscCost[i];
-    totalMiscBudget += miscBudget[i];
-    totalMiscExtra += miscExtra[i];
-    totalMiscDeficit += miscDeficit[i];
+ totalFoodCost += foodCost[i];
+ totalFoodBudget += foodBudget[i];
+ totalFoodExtra += foodExtra[i];
+ totalFoodDeficit += foodDeficit[i];
+ totalRentCost += rentCost[i];
+ totalRentBudget += rentBudget[i];
+ totalRentExtra += rentExtra[i];
+ totalRentDeficit += rentDeficit[i];
+ totalEntertainmentCost += entertainmentCost[i];
+ totalEntertainmentBudget += entertainmentBudget[i];
+ totalEntertainmentExtra += entertainmentExtra[i];
+ totalEntertainmentDeficit += entertainmentDeficit[i];
+ totalTuitionCost += tuitionCost[i];
+ totalTuitionBudget += tuitionBudget[i];
+ totalTuitionExtra += tuitionExtra[i];
+ totalTuitionDeficit += tuitionDeficit[i];
+ totalSavingsCost += savingsCost[i];
+ totalSavingsBudget += savingsBudget[i];
+ totalSavingsExtra += savingsExtra[i];
+ totalSavingsDeficit += savingsDeficit[i];
+ totalMiscCost += miscCost[i];
+ totalMiscBudget += miscBudget[i];
+ totalMiscExtra += miscExtra[i];
+ totalMiscDeficit += miscDeficit[i];
   }
 }
 
-/*std::string Expenses::financialAdvice() {
-	std::string concatAdvice = "";
-	if(totalFoodDeficit > 0){
-	concatAdvice += "It is recommended to spend no more than 15% on Food\n";
-	}
-	if(totalRentDeficit > 0){
-	concatAdvice += "Remember, put 30% of your income towards Rent this month\n";
-	}
-	if(totalEntertainmentDeficit > 0){
-	concatAdvice += "Prioritize your spending! Your Entertainment costs have exceeded 10%\n";
-	}
-	if(totalTuitionExtra > 0) {
-	concatAdvice += "Delegate 20% of your income to Tuition this month to avoid student loan debt!\n";
-	}
-	if(totalTuitionDeficit > 0) {
-	concatAdvice += "Only 20% of your income should be spent on Tuition\n";
-	}
-	if(totalSavingsDeficit > 0) {
-	concatAdvice += "Your Savings are low, make sure to save at least 5% of your income this month!\n";
-	}
-	if(totalMiscDeficit > 0) {
-	concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income. Shop smart!\n";
-	}
-	if(totalAnnualExtra > 0){
-	concatAdvice += "You have some extra total money! Add it to Savings!\n";
-	}
-	if((totalFoodBudget/totalAnnualBudget) > .17
-	|| (totalRentBudget/totalAnnualBudget) > .33
-	|| (totalEntertainmentBudget/totalAnnualBudget) > .12
-	|| (totalTuitionBudget/totalAnnualBudget) > .22
-	|| (totalMiscBudget/totalAnnualBudget) > .22){
-	concatAdvice += "Too much of your budget is in  \n";
+string Expenses::financialAdvice() {
+	string concatAdvice = "";
+
+	if (totalFoodDeficit > 0) {
+		concatAdvice += "It is recommended to spend no more than 15% on Food.\n";
 	}
 
-	concatAdvice += "Treat yourself, but don't overspend\n";
+	if (totalRentDeficit > 0) {
+		concatAdvice += "Remember, put 30% of your income towards Rent.\n";
+	}
+
+	if (totalEntertainmentDeficit > 0) {
+		concatAdvice += "Prioritize your spending! Your Entertainment costs have exceeded 10%.\n";
+	}
+
+	if (totalTuitionDeficit > 0) {
+		concatAdvice += "Only 20% of your income should be spent on Tuition.\n";
+	}
+
+	if (totalSavingsDeficit > 0) {
+		concatAdvice += "Your Savings are low, make sure to save at least 5% of your income!\n";
+	}
+
+	if (totalMiscDeficit > 0) {
+		concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income. Shop smart!\n";
+	}
+
+	if (totalAnnualExtra > 0) {
+		concatAdvice += "You have some extra money! Add it to Savings!\n";
+	}
+
+	if ((totalFoodBudget / totalAnnualBudget) > .17) {
+		concatAdvice += "Too much of your budget is in food.\n";
+	}
+
+	if ((totalRentBudget / totalAnnualBudget) > .33) {
+		concatAdvice += "Too much of your budget is in rent.\n";
+	}
+
+	if ((totalEntertainmentBudget / totalAnnualBudget) > .12) {
+		concatAdvice += "Too much of your budget is in entertainment.\n";
+	}
+	
+	if ((totalTuitionBudget / totalAnnualBudget) > .22) {
+		concatAdvice += "Too much of your budget is in tuition.\n";
+	}
+
+	if ((totalMiscBudget / totalAnnualBudget) > .22) {
+		concatAdvice += "Too much of your budget is in miscellaneous expenses.\n";
+	}
+
+	concatAdvice += "Treat yourself, but don't overspend.\n";
+
 	return concatAdvice;
+
+	//for overall advice
 }
 
-std::string Expenses::financialAdvice(int month) {
-	std::string concatAdvice = "";
-	if () {
+string Expenses::financialAdvice(int month) {
+	string concatAdvice = "";
+	string monthString;
 
-	}
-	else {
+	switch(month) {
+	
+	case 0: monthString = "January";
 
+	case 1: monthString = "February";
+
+	case 2: monthString = "March";
+
+	case 3: monthString = "April";
+
+	case 4: monthString = "May";
+
+	case 5: monthString = "June";
+
+	case 6: monthString = "July";
+
+	case 7: monthString = "August";
+
+	case 8: monthString = "September";
+
+	case 9: monthString = "October";
+
+	case 10: monthString = "November";
+
+	case 11: monthString = "December";
 	}
+
+
+	if (totalFoodDeficit > 0) {
+		concatAdvice += "It is recommended to spend no more than 15% on Food in ";
+		concatAdvice += monthString;
+		concatAdvice += ".\n";
+	}
+
+	if (totalRentDeficit > 0) {
+		concatAdvice += "Remember, put 30% of your income towards Rent in ";
+		concatAdvice += monthString;
+		concatAdvice += ".\n";
+	}
+
+	if (totalEntertainmentDeficit > 0) {
+		concatAdvice += "Prioritize your spending! Your Entertainment costs have exceeded 10% in ";
+		concatAdvice += monthString;
+		concatAdvice += ".\n";
+	}
+
+	if (totalTuitionExtra > 0) {
+		concatAdvice += "Delegate 20% of your income to Tuition this month to avoid student loan debt!\n";
+	}
+
+	if (totalTuitionDeficit > 0) {
+		concatAdvice += "Only 20% of your income should be spent on Tuition in ";
+		concatAdvice += monthString;
+		concatAdvice += ".\n";
+	}
+
+	if (totalSavingsDeficit > 0) {
+		concatAdvice += "Your Savings are low, make sure to save at least 5% of your income this month!\n";
+	}
+
+	if (totalMiscDeficit > 0) {
+		concatAdvice += "Miscellaneous costs like clothing or transportation shouldn't exceed 20% of your income. Shop smart!\n";
+	}
+
+	if (totalAnnualExtra > 0) {
+		concatAdvice += "You have some extra money! Add it to Savings!\n";
+	}
+
+	if ((totalFoodBudget / totalAnnualBudget) > .17) {
+		concatAdvice += "Too much of your budget is in food this month.\n";
+	}
+
+	if ((totalRentBudget / totalAnnualBudget) > .33) {
+		concatAdvice += "Too much of your budget is in rent this month.\n";
+	}
+
+	if ((totalEntertainmentBudget / totalAnnualBudget) > .12) {
+		concatAdvice += "Too much of your budget is in entertainment this month.\n";
+	}
+
+	if ((totalTuitionBudget / totalAnnualBudget) > .22) {
+		concatAdvice += "Too much of your budget is in tuition this month.\n";
+	}
+
+	if ((totalMiscBudget / totalAnnualBudget) > .22) {
+		concatAdvice += "Too much of your budget is in miscellaneous expenses this month.\n";
+	}
+
+	concatAdvice += "Treat yourself, but don't overspend.\n";
+
 	return concatAdvice;
-	}*/
+
+	//Specific to each month
+}

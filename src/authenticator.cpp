@@ -12,9 +12,10 @@
 #include <istream>
 #include <string>
 #include <vector>
-using namespace std;
 #include "authenticator.h"
 #include "user.h"
+
+using namespace std;
 
 Authenticator::Authenticator(){
 	this->currentUser = NULL;
