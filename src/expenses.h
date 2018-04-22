@@ -1,8 +1,9 @@
 #ifndef EXPENSES_H_
 #define EXPENSES_H_
 
-class Expenses{
 public:
+    explicit Expenses(QWidget *parent = 0);
+    ~Expenses();
     Expenses(int num);
     void fillArrays(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget);
     void setFoodCost(double food, int month);
@@ -30,10 +31,10 @@ public:
     void setMiscBudget(double misc, int month);
     double getMiscBudget(int month);
     void setExtraDeficit();
-    string financialAdvice(int month);
-	string financialAdvice();
+    void financialAdvice();
 
 private:
+    Ui::Expenses *ui;
     double foodCost[12];
     double foodBudget[12];
     double foodExtra[12];
@@ -93,3 +94,7 @@ private:
 };
 
 #endif // EXPENSES_H
+
+
+
+#endif
