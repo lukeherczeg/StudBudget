@@ -232,7 +232,7 @@ void Expenses::setExtraDeficit() {
   }
 }
 
-std::string Expenses::financialAdvice() {
+/*std::string Expenses::financialAdvice() {
 	std::string concatAdvice = "";
 	if(totalFoodDeficit > 0){
 	concatAdvice += "It is recommended to spend no more than 15% on Food\n";
@@ -279,4 +279,4 @@ std::string Expenses::financialAdvice(int month) {
 
 	}
 	return concatAdvice;
-	}
+	}*/
