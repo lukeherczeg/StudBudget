@@ -71,6 +71,7 @@ void Account::writeData(){
 					  << " | " << "TUITION: " 				<< 	this->expenses->getTuitionCost(i)		//each month, then each expense is printed for that month
 					  << " | " << "SAVINGS: "	    		<< 	this->expenses->getSavingsCost(i)
 					  << " | " << "MISC: "					<< 	this->expenses->getMiscCost(i)
+					  << " | " << "FOODBUDGET: " 			<<	this->expenses->getFoodBudget(i)
 					  << " | " << "RENTBUDGET: " 			<< 	this->expenses->getRentBudget(i)
 					  << " | " << "ENTERTAINMENTBUDGET: " 	<< 	this->expenses->getEntertainmentBudget(i)
 					  << " | " << "TUITIONBUDGET: " 		<< 	this->expenses->getTuitionBudget(i)
@@ -127,6 +128,9 @@ void Account::setCost(double amount){
 	}
 	else if(this->expenseType == "MISC"){
 		this->expenses->setMiscCost(amount, this->month);
+	}
+	else if(this->expenseType == "FOODBUDGET"){
+		this->expenses->setFoodBudget(amount, this->month);
 	}
 	else if(this->expenseType == "RENTBUDGET"){
 		this->expenses->setRentBudget(amount, this->month);

@@ -27,7 +27,7 @@ int main() {
 
 
 		month = 10;									// These are just for testing!
-		type = "MISCBUDGET";
+		type = "FOODBUDGET";
 		user->getAccount()->setExpenseType(type); // This is how you make sure you are on the right expense
 		user->getAccount()->setMonth(month);	// this is how you set the month you are on
 		user->getAccount()->deposit(100);		// this is how you deposit
