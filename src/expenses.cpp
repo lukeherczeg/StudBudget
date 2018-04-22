@@ -1,6 +1,22 @@
 #include "expenses.h"
 #include <string>
 
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
+#include <QtCharts>
+
+Expenses::Expenses(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::Expenses)
+{
+    ui->setupUi(this);
+}
+
+Expenses::~Expenses()
+{
+    delete ui;
+}
+
 Expenses::Expenses(int num) {
     for(int i = 0; i < 12; i++) {
         foodCost[i] = 0;
@@ -44,6 +60,29 @@ double Expenses::getFoodCost(int month) {
   return foodCost[month];
 }
 
+void Expenses::getFoodGraph(){ // annual food spending line graph
+  // set foodGraph data
+   QLineSeries *foodGraph = new QLineSeries();
+   for(int i = 0; i < 12; i++) {
+     foodGraph->append(i + 1, getFoodCost(i));
+   }
+
+  // make food graph
+  QChart *foodChart = new QChart();
+  foodChart->legend()->hide();
+  foodChart->addSeries(foodGraph);
+  foodChart->createDefaultAxes();
+  foodChart->setTitle("Food Spending");
+
+  // view food graph
+  QChartView *foodView = new QChartView(foodChart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+  QMainWindow window;
+  window.setCentralWidget(foodView);
+  window.resize(400, 300);
+  window.show();
+}
+
 void Expenses::setFoodBudget(double food, int month) {
   foodBudget[month] = food;
   totalBudget[month] += food;
@@ -60,6 +99,29 @@ void Expenses::setRentCost(double rent, int month) {
 
 double Expenses::getRentCost(int month) {
   return foodCost[month];
+}
+
+void Expenses::getRentGraph() { // annual rent spending line graph
+  // set rentGraph data
+   QLineSeries *rentGraph = new QLineSeries();
+   for(int i = 0; i < 12; i++) {
+     rentGraph->append(i + 1, getRentCost(i));
+   }
+
+  // make rent graph
+  QChart *rentChart = new QChart();
+  rentChart->legend()->hide();
+  rentChart->addSeries(rentGraph);
+  rentChart->createDefaultAxes();
+  rentChart->setTitle("Rent Spending");
+
+  // view rent graph
+  QChartView *rentView = new QChartView(rentChart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+  QMainWindow window;
+  window.setCentralWidget(rentView);
+  window.resize(400, 300);
+  window.show();
 }
 
 void Expenses::setRentBudget(double rent, int month) {
@@ -80,6 +142,29 @@ double Expenses::getEntertainmentCost(int month) {
   return entertainmentCost[month];
 }
 
+void Expenses::getEntertainmentGraph() { // annual entertainment spending line graph
+  // set entertainmentGraph data
+   QLineSeries *entertainmentGraph = new QLineSeries();
+   for(int i = 0; i < 12; i++) {
+     entertainmentGraph->append(i + 1, getEntertainmentCost(i));
+   }
+
+  // make entertainment graph
+  QChart *entertainmentChart = new QChart();
+  entertainmentChart->legend()->hide();
+  entertainmentChart->addSeries(entertainmentGraph);
+  entertainmentChart->createDefaultAxes();
+  entertainmentChart->setTitle("Entertainment Spending");
+
+  // view entertainment graph
+  QChartView *entertainmentView = new QChartView(entertainmentChart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+  QMainWindow window;
+  window.setCentralWidget(entertainmentView);
+  window.resize(400, 300);
+  window.show();
+}
+
 void Expenses::setEntertainmentBudget(double entertainment, int month) {
   entertainmentBudget[month] = entertainment;
   totalBudget[month] += entertainment;
@@ -96,6 +181,29 @@ void Expenses::setTuitionCost(double tuition, int month) {
 
 double Expenses::getTuitionCost(int month) {
   return tuitionCost[month];
+}
+
+void Expenses::getTuitionGraph() { // annual tuition spending line graph
+  // set tuitionGraph data
+   QLineSeries *tuitionGraph = new QLineSeries();
+   for(int i = 0; i < 12; i++) {
+     tuitionGraph->append(i + 1, getTuitionCost(i));
+   }
+
+  // make tuition graph
+  QChart *tuitionChart = new QChart();
+  tuitionChart->legend()->hide();
+  tuitionChart->addSeries(tuitionGraph);
+  tuitionChart->createDefaultAxes();
+  tuitionChart->setTitle("Tuition Spending");
+
+  // view tuition graph
+  QChartView *tuitionView = new QChartView(tuitionChart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+  QMainWindow window;
+  window.setCentralWidget(tuitionView);
+  window.resize(400, 300);
+  window.show();
 }
 
 void Expenses::setTuitionBudget(double tuition, int month) {
@@ -116,6 +224,29 @@ double Expenses::getSavingsCost(int month) {
   return savingsCost[month];
 }
 
+void Expenses::getSavingsGraph() { // annual savings spending line graph
+  // set savingsGraph data
+  QLineSeries *savingsGraph = new QLineSeries();
+  for(int i = 0; i < 12; i++) {
+    savingsGraph->append(i + 1, getSavingsCost(i));
+  }
+
+  // make savings graph
+  QChart *savingsChart = new QChart();
+  savingsChart->legend()->hide();
+  savingsChart->addSeries(savingsGraph);
+  savingsChart->createDefaultAxes();
+  savingsChart->setTitle("Savings Spending");
+
+  // view savings graph
+  QChartView *savingsView = new QChartView(savingsChart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+  QMainWindow window;
+  window.setCentralWidget(savingstView);
+  window.resize(400, 300);
+  window.show();
+}
+
 void Expenses::setSavingsBudget(double savings, int month) {
   savingsBudget[month] = savings;
   totalBudget[month] += savings;
@@ -132,6 +263,29 @@ void Expenses::setMiscCost(double misc, int month) {
 
 double Expenses::getMiscCost(int month) {
   return miscCost[month];
+}
+
+void Expenses::getMiscGraph() { // annual misc spending line graph
+  // set miscGraph data
+   QLineSeries *miscGraph = new QLineSeries();
+   for(int i = 0; i < 12; i++) {
+     miscGraph->append(i + 1, getMiscCost(i));
+   }
+
+  // make misc graph
+  QChart *miscChart = new QChart();
+  miscChart->legend()->hide();
+  miscChart->addSeries(miscGraph);
+  miscChart->createDefaultAxes();
+  miscChart->setTitle("Misc Spending");
+
+  // view misc graph
+  QChartView *miscView = new QChartView(miscChart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+  QMainWindow window;
+  window.setCentralWidget(miscView);
+  window.resize(400, 300);
+  window.show();
 }
 
 void Expenses::setMiscBudget(double misc, int month) {
@@ -236,6 +390,190 @@ void Expenses::setExtraDeficit() {
     totalMiscExtra += miscExtra[i];
     totalMiscDeficit += miscDeficit[i];
   }
+}
+
+void Expenses::getAnnualCostChart() { // expenses pie chart by year
+  QPieSeries *series = new QPieSeries();
+  series->append("Food", totalFoodCost);
+  series->append("Rent", totalRentCost);
+  series->append("Entertainment", totalEntertainmentCost);
+  series->append("Tuition", totalTuitionCost);
+  series->append("Savings", totalSavingsCost);
+  series->append("Misc", totalMiscCost);
+
+  QPieSlice *slice0 = series->slices().at(0);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkRed, 2));
+  slice->setBrush(Qt::red);
+  QPieSlice *slice1 = series->slices().at(1);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkGreen, 2));
+  slice->setBrush(Qt::green);
+  QPieSlice *slice2 = series->slices().at(2);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkBlue, 2));
+  slice->setBrush(Qt::blue);
+  QPieSlice *slice3 = series->slices().at(3);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkCyan, 2));
+  slice->setBrush(Qt::cyan);
+  QPieSlice *slice4 = series->slices().at(4);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkMagenta, 2));
+  slice->setBrush(Qt::magenta);
+  QPieSlice *slice5 = series->slices().at(5);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkYellow, 2));
+  slice->setBrush(Qt::yellow);
+
+  QChart *chart = new QChart();
+  chart->addSeries(series);
+  chart->setTitle("Annual Spending");
+  chart->legend()->hide();
+
+  QChartView *chartView = new QChartView(chart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+
+  QMainWindow window;
+  window.setCentralWidget(chartView);
+  window.resize(400, 300);
+  window.show();
+}
+
+void Expenses::getMonthCostChart(int month) { // expenses pie chart by month
+  QPieSeries *series = new QPieSeries();
+  series->append("Food", foodCost[month]);
+  series->append("Rent", rentCost[month]);
+  series->append("Entertainment", entertainmentCost[month]);
+  series->append("Tuition", tuitionCost[month]);
+  series->append("Savings", savingsCost[month]);
+  series->append("Misc", miscCost[month]);
+
+  QPieSlice *slice0 = series->slices().at(0);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkRed, 2));
+  slice->setBrush(Qt::red);
+  QPieSlice *slice1 = series->slices().at(1);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkGreen, 2));
+  slice->setBrush(Qt::green);
+  QPieSlice *slice2 = series->slices().at(2);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkBlue, 2));
+  slice->setBrush(Qt::blue);
+  QPieSlice *slice3 = series->slices().at(3);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkCyan, 2));
+  slice->setBrush(Qt::cyan);
+  QPieSlice *slice4 = series->slices().at(4);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkMagenta, 2));
+  slice->setBrush(Qt::magenta);
+  QPieSlice *slice5 = series->slices().at(5);
+  slice->setLabelVisible();
+  slice->setPen(QPen(Qt::darkYellow, 2));
+  slice->setBrush(Qt::yellow);
+
+  QChart *chart = new QChart();
+  chart->addSeries(series);
+  chart->setTitle("Monthly Spending");
+  chart->legend()->hide();
+
+  QChartView *chartView = new QChartView(chart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+
+  QMainWindow window;
+  window.setCentralWidget(chartView);
+  window.resize(400, 300);
+  window.show();
+}
+
+void Expenses::getExtraDeficitGraphYear() { // expenses bar chart by year
+  setExtraDeficit();
+
+  QBarSet *set0 = new QBarSet("Under budet spending");
+  QBarSet *set1 = new QBarSet("Unused budget");
+  QBarSet *set2 = new QBarSet("Over budget spending");
+
+  *set0 << totalFoodCost << totalRentCost << totalEntertainmentCost << totalTuitionCost << totalSavingsCost << totalMiscCost;
+  *set1 << totalFoodExtra << totalRentExtra << totalEntertainmentExtra << totalTuitionExtra << totalSavingsExtra << totalMiscExtra;
+  *set2 << totalFoodDeficit << totalRentDeficit << totalEntertainmentDeficit << totalTuitionDeficit << totalSavingsDeficit << totalMiscDeficit;
+
+  set0->setBrush(Qt::gray);
+  set1->setBrush(Qt::green);
+  set2->setBrush(Qt::red);
+
+  QStackedBarSeries *series = new QStackedBarSeries();
+  series->append(set0);
+  series->append(set1);
+  series->append(set2);
+
+  QChart *chart = new QChart();
+  chart->addSeries(series);
+  chart->setTitle("Deficit Spending by Year");
+  chart->setAnimationOptions(QChart::SeriesAnimations);
+
+  QStringList categories;
+  categories << "Food" << "Rent" << "Entertainment" << "Tuition" << "Savings" << "Misc";
+  QBarCategoryAxis *axis = new QBarCategoryAxis();
+  axis->append(categories);
+  chart->createDefaultAxes();
+  chart->setAxisX(axis, series);
+
+  chart->legend()->setVisible(true);
+  chart->legend()->setAlignment(Qt::AlignBottom);
+
+  QChartView *chartView = new QChartView(chart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+
+  QMainWindow window;
+   window.setCentralWidget(chartView);
+   window.resize(420, 300);
+   window.show();
+}
+
+void Expenses::getExtraDeficitGraphMonth(int month) { // expenses bar chart by month
+  setExtraDeficit();
+
+  QBarSet *set0 = new QBarSet("Under budet spending");
+  QBarSet *set1 = new QBarSet("Unused budget");
+  QBarSet *set2 = new QBarSet("Over budget spending");
+
+  *set0 << foodCost[month] << rentCost[month] << entertainmentCost[month] << tuitionCost[month] << savingsCost[month] << miscCost[month];
+  *set1 << foodExtra[month] << rentExtra[month] << entertainmentExtra[month] << tuitionExtra[month] << savingsExtra[month] << miscExtra[month];
+  *set2 << foodDeficit[month] << rentDeficit[month] << entertainmentDeficit[month] << tuitionDeficit[month] << savingsDeficit[month] << miscDeficit[month];
+
+  set0->setBrush(Qt::gray);
+  set1->setBrush(Qt::green);
+  set2->setBrush(Qt::red);
+
+  QStackedBarSeries *series = new QStackedBarSeries();
+  series->append(set0);
+  series->append(set1);
+  series->append(set2);
+
+  QChart *chart = new QChart();
+  chart->addSeries(series);
+  chart->setTitle("Deficit Spending in Month");
+  chart->setAnimationOptions(QChart::SeriesAnimations);
+
+  QStringList categories;
+  categories << "Food" << "Rent" << "Entertainment" << "Tuition" << "Savings" << "Misc";
+  QBarCategoryAxis *axis = new QBarCategoryAxis();
+  axis->append(categories);
+  chart->createDefaultAxes();
+  chart->setAxisX(axis, series);
+
+  chart->legend()->setVisible(true);
+  chart->legend()->setAlignment(Qt::AlignBottom);
+
+  QChartView *chartView = new QChartView(chart);
+  chartView->setRenderHint(QPainter::Antialiasing);
+
+  QMainWindow window;
+  window.setCentralWidget(chartView);
+  window.resize(420, 300);
+  window.show();
 }
 
 std::string Expenses::financialAdvice() {
