@@ -111,7 +111,7 @@ void Authenticator::logIn(string username, string password, bool & finished){
 void Authenticator::signUp(string username, string password){
 	ifstream readData;
 	string tempUser, tempUsername, tempPassword;
-	int passwordStart, tempPasswordLength, tempUsernameLength, usernameStart = 10;
+	int 	passwordStart, tempPasswordLength, tempUsernameLength, usernameStart = 10;
 	bool exists = false;
 
 	readData.open("authData.txt");

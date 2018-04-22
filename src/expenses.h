@@ -1,8 +1,36 @@
 #ifndef EXPENSES_H_
 #define EXPENSES_H_
-#include <string>
 
-class Expenses {
+class Expenses{
+public:
+    Expenses(int num);
+    void fillArrays(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget);
+    void setFoodCost(double food, int month);
+    double getFoodCost(int month);
+    void setFoodBudget(double food, int month);
+    double getFoodBudget(int month);
+    void setRentCost(double rent, int month);
+    double getRentCost(int month);
+    void setRentBudget(double rent, int month);
+    double getRentBudget(int month);
+    void setEntertainmentCost(double entertainment, int month);
+    double getEntertainmentCost(int month);
+    void setEntertainmentBudget(double entertainment, int month);
+    double getEntertainmentBudget(int month);
+    void setTuitionCost(double tuition, int month);
+    double getTuitionCost(int month);
+    void setTuitionBudget(double tuition, int month);
+    double getTuitionBudget(int month);
+    void setSavingsCost(double savings, int month);
+    double getSavingsCost(int month);
+    void setSavingsBudget(double savings, int month);
+    double getSavingsBudget(int month);
+    void setMiscCost(double misc, int month);
+    double getMiscCost(int month);
+    void setMiscBudget(double misc, int month);
+    double getMiscBudget(int month);
+    void setExtraDeficit();
+    void financialAdvice();
 
 private:
     //Ui::Expenses *ui;
@@ -35,54 +63,37 @@ private:
     double totalExtra[12];
     double totalDeficit[12];
     double totalFoodCost;
+    double totalFoodBudget;
     double totalFoodExtra;
     double totalFoodDeficit;
     double totalRentCost;
+    double totalRentBudget;
     double totalRentExtra;
     double totalRentDeficit;
     double totalEntertainmentCost;
+    double totalEntertainmentBudget;
     double totalEntertainmentExtra;
     double totalEntertainmentDeficit;
     double totalTuitionCost;
+    double totalTuitionBudget;
     double totalTuitionExtra;
     double totalTuitionDeficit;
     double totalSavingsCost;
+    double totalSavingsBudget;
     double totalSavingsExtra;
     double totalSavingsDeficit;
     double totalMiscCost;
+    double totalMiscBudget;
     double totalMiscExtra;
     double totalMiscDeficit;
-
-public:
-    Expenses(int num);
-    void fillArrays(int* f, int* r, int* e, int* t, int* s, int* m, int* fBudget, int* rBudget, int* eBudget, int* tBudget, int* sBudget, int* mBudget);
-    void setFoodCost(double food, int month);
-    double getFoodCost(int month);
-    void setFoodBudget(double food, int month);
-    double getFoodBudget(int month);
-    void setRentCost(double rent, int month);
-    double getRentCost(int month);
-    void setRentBudget(double rent, int month);
-    double getRentBudget(int month);
-    void setEntertainmentCost(double entertainment, int month);
-    double getEntertainmentCost(int month);
-    void setEntertainmentBudget(double entertainment, int month);
-    double getEntertainmentBudget(int month);
-    void setTuitionCost(double tuition, int month);
-    double getTuitionCost(int month);
-    void setTuitionBudget(double tuition, int month);
-    double getTuitionBudget(int month);
-    void setSavingsCost(double savings, int month);
-    double getSavingsCost(int month);
-    void setSavingsBudget(double savings, int month);
-    double getSavingsBudget(int month);
-    void setMiscCost(double misc, int month);
-    double getMiscCost(int month);
-    void setMiscBudget(double misc, int month);
-    double getMiscBudget(int month);
-    void setExtraDeficit();
-    std::string financialAdvice();
-    std::string financialAdvice(int month);
+    double totalAnnualCost;
+    double totalAnnualBudget;
+    double totalAnnualExtra;
+    double totalAnnualDeficit;
 };
+
+#endif // EXPENSES_H
+
+
 
 #endif

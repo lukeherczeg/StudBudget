@@ -1,6 +1,18 @@
 #include "expenses.h"
 #include <string>
 
+/*Expenses::Expenses(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::Expenses)
+{
+    ui->setupUi(this);
+}
+
+Expenses::~Expenses()
+{
+    delete ui;
+}*/
+
 Expenses::Expenses(int num) {
     for(int i = 0; i < 12; i++) {
         foodCost[i] = 0;
@@ -212,21 +224,27 @@ void Expenses::setExtraDeficit() {
     }
 
     totalFoodCost += foodCost[i];
+    totalFoodBudget += foodBudget[i];
     totalFoodExtra += foodExtra[i];
     totalFoodDeficit += foodDeficit[i];
     totalRentCost += rentCost[i];
+    totalRentBudget += rentBudget[i];
     totalRentExtra += rentExtra[i];
     totalRentDeficit += rentDeficit[i];
     totalEntertainmentCost += entertainmentCost[i];
+    totalEntertainmentBudget += entertainmentBudget[i];
     totalEntertainmentExtra += entertainmentExtra[i];
     totalEntertainmentDeficit += entertainmentDeficit[i];
     totalTuitionCost += tuitionCost[i];
+    totalTuitionBudget += tuitionBudget[i];
     totalTuitionExtra += tuitionExtra[i];
     totalTuitionDeficit += tuitionDeficit[i];
     totalSavingsCost += savingsCost[i];
+    totalSavingsBudget += savingsBudget[i];
     totalSavingsExtra += savingsExtra[i];
     totalSavingsDeficit += savingsDeficit[i];
     totalMiscCost += miscCost[i];
+    totalMiscBudget += miscBudget[i];
     totalMiscExtra += miscExtra[i];
     totalMiscDeficit += miscDeficit[i];
   }
