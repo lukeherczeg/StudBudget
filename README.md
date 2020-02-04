@@ -1,10 +1,8 @@
 # StudBudget
 
-## What is StudBudget?
+### StudBudget is a student budgeting app that helps keep track of expenses and save money. It's also a standalone C++ application with an integrated GUI built in Qt.
 
-#### StudBudget is a student budgeting app that helps keep track of expenses and save money. StudBudget is a standalone C++ application with an integrated GUI built in Qt.
-
-A download to the .exe and it's required dependencies are found [here](https://1drv.ms/f/s!AoHt5lo2Knznhg031g4mEvNC-m4A "App Download Page").
+#### A download to the executable and it's required dependencies are found [here](https://1drv.ms/f/s!AoHt5lo2Knznhg031g4mEvNC-m4A "App Download Page")!
 
 ### Features
 
