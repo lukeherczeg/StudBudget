@@ -85,4 +85,4 @@ For any questions or comments, please reach out to one of us!\*
 * **Justin Calloway** - _Product and Logo Design_ - [GitHub](https://github.com/jcallowayufl)
 * **Cat Euliano** - [GitHub](https://github.com/ceuliano)
 
-See also the list of [contributors](https://github.com/Kbarrera123/QtGUI2/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/lukeherczeg/StudBudget/graphs/contributors) who participated in this project.
