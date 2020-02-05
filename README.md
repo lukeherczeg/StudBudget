@@ -29,14 +29,6 @@
 * Allows you to save your financial data
 * Receive financial help tailored to you!
 
-## Who created StudBudget?
-
-StudBudget was created by a group of 7 UF Computer Science and Engineering students for a class project. For more information, see the _Authors_ section below.
-
-#### Using StudBudget: A Note
-
-To run a full version of StudBudget with GUI display on your computer, please contact one of the authors listed below for all the necessary files. This is because Qt is required to visualize the GUI. (More on this in _Deployment_)
-
 ## Getting Started
 
 In order to build this app, we had a team of 7 that was split into several main areas (see _Authors_ below for who did what):
