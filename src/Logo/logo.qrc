@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/images">
+        <file>StudBudget.jpg</file>
+    </qresource>
+</RCC>
