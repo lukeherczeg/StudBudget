@@ -2,7 +2,7 @@
 
 ### A standalone C++ application with an integrated GUI built in Qt designed to help students keep track of expenses and save money.
 
-#### A download to the executable and it's required dependencies are found [here](https://1drv.ms/f/s!AoHt5lo2Knznhg031g4mEvNC-m4A "App Download Page")!
+#### A download to the executable and it's required dependencies are found [here](https://1drv.ms/f/s!AoHt5lo2KnzniktEAvN2Bk_gBQMJ "App Download Page")!
 
 ### Features
 
