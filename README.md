@@ -28,6 +28,7 @@
 
 * Allows you to save your financial data
 * Receive financial help tailored to you!
+* Database implementation created from scratch to store local data
 
 ## Getting Started
 
