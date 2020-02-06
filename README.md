@@ -73,7 +73,7 @@ For any questions or comments, please reach out to one of us!\*
 * **Luke Herczeg** - _Team Leader, Backend, Database, Integration, Deployment_ - [GitHub](https://github.com/lukeherczeg)
 * **Kayla Barrera** - _Qt GUI, GitHub Repo, Integration_ - [GitHub](https://github.com/Kbarrera123)
 * **Caitlin Becker** - _Data Visualization in Qt, Hashing Algorithm_ - [GitHub](https://github.com/caitlinbecker)
-* **Madeline Farina** - _Team Leader, Final Report, Security_ - [GitHub](https://github.com/mfarina1)
+* **Madeline Farina** - _Final Report, Security_ - [GitHub](https://github.com/mfarina1)
 * **Christie Ruales** - _Qt GUI_ - [GitHub](https://github.com/cruales)
 * **Justin Calloway** - _Product and Logo Design_ - [GitHub](https://github.com/jcallowayufl)
 * **Cat Euliano** - [GitHub](https://github.com/ceuliano)
