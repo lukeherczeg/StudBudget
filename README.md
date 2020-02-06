@@ -69,7 +69,7 @@ It may be easier to start off using Qt Open Source, as it allows you to deploy t
 
 ## Authors
 
-For any questions or comments, please reach out to one of us!\*
+For any questions or comments, please reach out to one of us!
 
 * **Luke Herczeg** - _Team Leader, Backend, Database, Integration, Deployment_ - [GitHub](https://github.com/lukeherczeg)
 * **Kayla Barrera** - _Qt GUI, GitHub Repo, Integration_ - [GitHub](https://github.com/Kbarrera123)
