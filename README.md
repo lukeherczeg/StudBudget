@@ -2,9 +2,9 @@
 
 ### A standalone C++ application with an integrated GUI built in Qt designed to help students keep track of expenses and save money.
 
-#### A download to the executable and it's required dependencies are found [here](https://tinyurl.com/r3hch7r "App Download Page")!
+### A download to the executable and it's required dependencies are found [here](https://tinyurl.com/r3hch7r "App Download Page")!
 
-### Features
+## Features
 
 **1. Personalized financial advice**
 
@@ -39,7 +39,7 @@ In order to build this app, we had a team of 7 that was split into several main 
 * Data Visualization -- Using QtCharts
 * Integration -- Combining the frontend and backend
 
-### Prerequisites
+## Prerequisites
 
 Coding StudBudget required prior knowledge of C++, but some things we were able to learn along the way included:
 
@@ -52,7 +52,7 @@ Coding StudBudget required prior knowledge of C++, but some things we were able 
 * User Authentication / Login system
 * Encryption, Security, Hashing
 
-### Installing for Open Source use
+## Installing for Open Source use
 
 You will need to clone this GitHub repository (or make your own if you're starting from scratch), and download Qt.
 
